@@ -22,12 +22,10 @@ export default function ThreeScene() {
     const load = async () => {
       const cube = await createCube(scene);
       cubeRef.current = cube;
-      // scene.add(cube);
 
       frameId = await animate(renderer, scene, camera, cube);
 
       const controls = new OrbitControls(camera, renderer.domElement);
-      // controls.addEventListener("change", renderer);
       controls.minDistance = 5;
       controls.maxDistance = 8;
       controls.enablePan = false;

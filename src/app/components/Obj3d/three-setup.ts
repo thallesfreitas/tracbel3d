@@ -1,8 +1,7 @@
 import * as THREE from "three";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 import { DRACOLoader, GLTFLoader } from "three/examples/jsm/Addons.js";
-// import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
 export const createScene = () => {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xbbbbbb);
@@ -27,13 +26,11 @@ export const createRenderer = (mount: any) => {
   return renderer;
 };
 export const textureLoader = new THREE.TextureLoader();
-function SetObjMaps(variableName: any, obj: any) {
+export const SetObjMaps = async (variableName: any, obj: any) => {
   const mro = "./model/" + variableName + "_occlusionRoughnessMetallic.jpg";
   const normalmap = "./model/" + variableName + "_normal.jpg";
 
   const metal_ao_ro = textureLoader.load(mro);
-  console.log("metal_ao_ro");
-  console.log(metal_ao_ro);
   metal_ao_ro.flipY = false;
 
   const normal = textureLoader.load(normalmap);
@@ -44,7 +41,7 @@ function SetObjMaps(variableName: any, obj: any) {
   obj.normalMap = normal;
   obj.aoMap = metal_ao_ro;
   obj.envMapIntensity = 1;
-}
+};
 export const mirrorMaterial1 = new THREE.MeshPhysicalMaterial({
   name: "mirrorMaterial",
   color: 0x8e9296,
@@ -77,7 +74,6 @@ export const createCube = async (scene: any) => {
   const loading = await loader.load(
     "./model/escavadeira10.glb",
     (gltf: any) => {
-      // scene.add(gltf.scene);
       gltf.scene.position.y = 0;
       const model = gltf.scene;
       model.traverse((child: any) => {
@@ -129,7 +125,6 @@ export const createCube = async (scene: any) => {
         } else if (child.material && child.material.name === "BODY_GRADE") {
           var map = textureLoader.load("./model/BODY_GRADE_baseColor.jpg");
           map.flipY = false;
-
           SetObjMaps("BODY_GRADE", child.material);
         } else if (child.material && child.material.name === "lambert2") {
           var alpha = textureLoader.load("./model/shadow.jpg");
