@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/projetos/tracbel",
+  // basePath: "/projetos/tracbel",
   images: { unoptimized: true },
 };
 

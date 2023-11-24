@@ -5,9 +5,7 @@ import ThreeScene from "./components/Obj3d/ThreeScene";
 function Page() {
   return (
     <>
-      {/* <Provider store={store}> */}
       <ThreeScene />
-      {/* </Provider> */}
     </>
   );
 }
