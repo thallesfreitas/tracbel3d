@@ -9,22 +9,37 @@ export const DRACO_URL =
 
 export const createScene = () => {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xbbbbbb);
+  scene.background = new THREE.Color(0xFFFFFF);
   return scene;
 };
 
 export const createCamera = () => {
   const aspectRatio = window.innerWidth / window.innerHeight;
-  const camera = new THREE.PerspectiveCamera(45, aspectRatio, 1, 2000);
-  camera.aspect = aspectRatio;
-  camera.updateProjectionMatrix();
-  camera.position.set(-40, 5, 30);
-  return camera;
+  const viewport = window.innerWidth;
+  if (viewport > 768) {
+    const camera = new THREE.PerspectiveCamera(22, aspectRatio, 1, 1000);
+    camera.aspect = aspectRatio;
+    camera.updateProjectionMatrix();
+    camera.position.set(-10, 5, 180);
+    return camera;
+  } else {
+    const camera = new THREE.PerspectiveCamera(85, aspectRatio, 1, 2000);
+    camera.aspect = aspectRatio;
+    camera.updateProjectionMatrix();
+    camera.position.set(-10, 5, 120);
+    return camera;
+  }
 };
 
 export const createRenderer = (mount: any) => {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  const viewport = window.innerWidth;
+  if (viewport > 768) {
+    renderer.setSize(window.innerWidth/1.7, window.innerHeight/1.6);
+  } else {
+    renderer.setSize(window.innerWidth, window.innerHeight/1.6);
+  }  
+  mount.innerHTML = "";
   mount.appendChild(renderer.domElement);
   return renderer;
 };

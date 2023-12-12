@@ -12,6 +12,15 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'banner': "url('/images/bg-banner.jpg')"
+      },
+      fontFamily: {
+        'abeezee': ['ABeeZee-Regular', 'sans-serif'],
+        'ubuntu': ['Ubuntu', 'sans-serif']
+      },
+      screens: {
+        'md': '769px',
+        'lg': '1025px'
       },
     },
   },

@@ -1,11 +1,25 @@
 // import { Provider } from "react-redux";
-import ThreeScene from "./components/Obj3d/ThreeScene";
+import Banner from "./components/Banner";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Gallery from "./components/Gallery";
+import Header from "./components/Header";
+import PosBanner from "./components/PosBanner";
+import Video from "./components/Video";
 // import { store } from "./store";
 
 function Page() {
   return (
     <>
-      <ThreeScene />
+      <div className="overflow-x-hidden ">
+        <Header />
+        <Banner />
+        <PosBanner />
+        <Gallery />
+        <Video />
+        <Contact />
+        <Footer />
+      </div>
     </>
   );
 }

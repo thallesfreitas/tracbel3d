@@ -13,6 +13,7 @@ import {
 export default function ThreeScene() {
   const mountRef = useRef(null);
   useEffect(() => {
+    console.log("Teste")
     const scene = createScene();
     const camera = createCamera();
     const renderer = createRenderer(mountRef.current);
@@ -34,5 +35,7 @@ export default function ThreeScene() {
     return () => renderer.dispose();
   }, []);
 
-  return <div ref={mountRef} />;
+  console.log("Teste 2")
+
+  return <div className="class-teste" ref={mountRef} />;
 }
