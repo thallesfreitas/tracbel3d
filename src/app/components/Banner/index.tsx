@@ -85,11 +85,20 @@ const Banner = () => {
   }, [controls]);
   return (
     <>
-      <div className="w-full h-[84vh] bg-banner bg-cover bg-no-repeat flex items-center flex-col relative max-lg:h-[36vh] max-sm:h-[32vh]">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: ["easeIn", "circOut"] }}
+        className="w-full h-[84vh] bg-banner bg-cover bg-no-repeat flex items-center flex-col relative max-lg:h-[36vh] max-sm:h-[32vh]"
+      >
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: ["easeIn", "circOut"] }}
+          transition={{
+            duration: 0.5,
+            delay: 0.5,
+            ease: ["easeIn", "circOut"],
+          }}
           className="absolute w-full h-[84vh] bg-[#ff2e00] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh]"
         ></motion.div>
         <div className="container pt-20 w-[80%] z-20 max-md:pt-8 max-md:w-full max-md:px-5 z-2">
@@ -174,7 +183,7 @@ const Banner = () => {
             loading="lazy"
           />
         </motion.div>
-      </div>
+      </motion.div>
     </>
   );
 };
