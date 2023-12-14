@@ -258,7 +258,7 @@ select {
 }
 
 .slideInRight {
-  animation: slideInRight 2.5s ease-in-out; /* Use a animação "slideInFromLeft" definida anteriormente */
+  animation: slideInRight 1s ease-out; /* Use a animação "slideInFromLeft" definida anteriormente */
 }
 
 @keyframes fadeIn {

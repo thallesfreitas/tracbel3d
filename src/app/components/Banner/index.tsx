@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
 const Banner = () => {
-  const elementRef = useRef(null);
+  //   const elementRef = useRef(null);
 
   //   useEffect(() => {
   //     const observer = new IntersectionObserver((entries) => {
