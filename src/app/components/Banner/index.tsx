@@ -1,189 +1,139 @@
 "use client";
 
-import { useEffect } from "react";
+import { useRef } from "react";
 
-import { motion, useAnimation } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import { Back, Power3 } from "gsap";
+
+import gsap from "gsap";
 import Image from "next/image";
 
 const Banner = () => {
-  //   const elementRef = useRef(null);
+  // const scrollToSection = () => {
+  //   const section = document.getElementById("secao");
+  //   if (section) {
+  //     section.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
+  const containerAnimation = useRef<HTMLDivElement>(null);
 
-  //   useEffect(() => {
-  //     const observer = new IntersectionObserver((entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("slideInLeft");
-  //         } else {
-  //           entry.target.classList.remove("slideInLeft");
-  //         }
-  //       });
-  //     });;
-
-  //     if (elementRef.current) {
-  //       observer.observe(elementRef.current);
-  //     }
-
-  //     return () => {
-  //       if (elementRef.current) {
-  //         observer.unobserve(elementRef.current);
-  //       }
-  //     };
-  //   }, []);
-
-  const scrollToSection = () => {
-    const section = document.getElementById("secao");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-  const blinkAnimation = {
-    initial: {
-      opacity: 0,
-      x: 1000,
-      filter: "none",
-      transition: { duration: 0.75 },
+  useGSAP(
+    () => {
+      // setTimeout(() => {
+      gsap
+        .timeline()
+        .fromTo(
+          ".whiteBG",
+          { opacity: 1 },
+          {
+            // delay: 1,
+            opacity: 0,
+            duration: 1,
+            ease: Power3.easeOut,
+            stagger: 0.2,
+          }
+        )
+        .fromTo(
+          ".orangeBG",
+          { opacity: 1 },
+          {
+            // delay: 0.6,
+            opacity: 0,
+            duration: 2,
+            // ease: Power3.easeOut,
+            // stagger: 0.2,
+          }
+        )
+        .fromTo(
+          ".textHeaderIntro",
+          { x: 300, opacity: 0 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1.5,
+            ease: Power3.easeOut,
+            stagger: 0.2,
+          }
+        )
+        .fromTo(
+          ".textHeaderCTA",
+          { scale: 1.5, opacity: 0 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 1.5,
+            ease: Back.easeOut,
+            delay: -0.3,
+          }
+        )
+        .fromTo(
+          ".imageHeaderTrator",
+          { scale: 1.5, x: 1500, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            x: 0,
+            duration: 1.5,
+            ease: Power3.easeOut,
+            delay: -0.3,
+          }
+        );
+      // }, 1000);
     },
-    start: {
-      opacity: 1,
-      x: 0,
-      filter: "none",
-      transition: { duration: 1, ease: ["circOut"], delay: 0.75 },
-    },
-    visible: {
-      opacity: 1,
-      filter: "none",
-      transition: { duration: 0.09 },
-    },
-    hidden: {
-      opacity: 1,
-      filter: "brightness(2)",
-      transition: { duration: 0.09 },
-    },
-    final: {
-      opacity: 1,
-      filter: "none",
-      transition: { duration: 3.0, ease: ["easeIn", "circOut"] },
-    },
-  };
+    { scope: containerAnimation }
+  );
 
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const sequence = async () => {
-      await controls.start("initial");
-      await controls.start("start");
-      await controls.start("hidden");
-      await controls.start("visible");
-      await controls.start("hidden");
-      await controls.start("visible");
-      await controls.start("hidden");
-      await controls.start("visible");
-      await controls.start("final");
-    };
-
-    sequence();
-  }, [controls]);
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: ["easeIn", "circOut"] }}
-        className="w-full h-[84vh] bg-banner bg-cover bg-no-repeat flex items-center flex-col relative max-lg:h-[36vh] max-sm:h-[32vh]"
+      <div
+        ref={containerAnimation}
+        className=" z-[100] w-full h-[84vh] bg-cover bg-no-repeat flex items-center flex-col relative max-lg:h-[36vh] max-sm:h-[32vh]"
       >
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.5,
-            ease: ["easeIn", "circOut"],
-          }}
-          className="absolute w-full h-[84vh] bg-[#ff2e00] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh]"
-        ></motion.div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        >
+          <source src="images/bg-banner_small.mp4" type="video/mp4" />
+        </video>
+
+        <div className="whiteBG z-[52] absolute w-full h-[84vh] bg-[#FFFFFF] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
+        <div className="orangeBG z-50 absolute w-full h-[84vh] bg-[#ff2e00] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
         <div className="container pt-20 w-[80%] z-20 max-md:pt-8 max-md:w-full max-md:px-5 z-2">
-          <motion.p
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.75,
-              ease: ["easeIn", "circOut"],
-            }}
-            className="text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw]"
-          >
+          <p className="textHeaderIntro text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw] opacity-0">
             Chegou a retroescavadeira que
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 1.0,
-              ease: ["easeIn", "circOut"],
-            }}
-            className="text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw]"
-          >
+          </p>
+          <p className="textHeaderIntro text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw] opacity-0">
             vai somar ao crescimento do
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 1.25,
-              ease: ["easeIn", "circOut"],
-            }}
-            className="text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw]"
-          >
+          </p>
+          <p className="textHeaderIntro text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw] opacity-0">
             seu negócio!
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 1.5,
-              ease: ["easeIn", "circOut"],
-            }}
-            className="text-[7vw] font-abeezee leading-[4vw] mt-10 mb-10 text-white max-md:mt-5 max-md:mb-10 2xl:text-[6vw] 2xl:leading-[5vw]"
-          >
+          </p>
+          <h1 className="textHeaderIntro text-[7vw] font-abeezee leading-[4vw] mt-10 mb-10 text-white max-md:mt-5 max-md:mb-10 2xl:text-[6vw] 2xl:leading-[5vw] opacity-0">
             HD96 E D100 4X4
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 1.75,
-              ease: ["easeIn", "circOut"],
-            }}
-          >
-            <button className="btn" onClick={scrollToSection}>
+          </h1>
+          <div className="textHeaderCTA opacity-0">
+            {/* <button className="btn" onClick={scrollToSection}> */}
+            <button className="btn">
               <span className="btn-revert font-ubuntu font-bold text-[17px] text-white">
                 Conheça
               </span>
             </button>
-          </motion.div>
+          </div>
         </div>
-        <motion.div
-          //   className="absolute left-0 right-0 max-md:top-auto max-lg:-bottom-[145px] max-md:-bottom-[120px] max-sm:-bottom-[60px] banner-top"
-          //   ref={elementRef}
-          className="absolute  max-md:top-auto max-lg:-bottom-[145px] max-md:-bottom-[120px] max-sm:-bottom-[60px] w-[100%]"
-          variants={blinkAnimation}
-          initial={{ opacity: 0 }}
-          animate={controls}
-        >
+        <div className="imageHeaderTrator absolute  max-md:top-auto max-lg:-bottom-[145px] max-md:-bottom-[120px] max-sm:-bottom-[60px] w-[100%] opacity-0">
           <Image
-            src="/images/trator2.webp"
+            src="images/trator2.webp"
             alt="Icon"
             className="w-full"
             width={150}
             height={500}
             loading="lazy"
           />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </>
   );
 };

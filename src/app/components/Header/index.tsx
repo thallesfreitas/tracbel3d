@@ -12,7 +12,7 @@ const Header = () => {
       >
         <div className="container flex flex-row items-center w-full max-md:px-5">
           <Image
-            src="/images/logo.svg"
+            src="images/logo.svg"
             alt="Logo"
             className=""
             width={164}

@@ -2,43 +2,40 @@ import * as THREE from "three";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 import { DRACOLoader, GLTFLoader } from "three/examples/jsm/Addons.js";
 
-export const MODEL_URL = "./model/escavadeira10.glb";
+export const MODEL_URL = "./model/escavadeira12.glb";
 export const hdrTextureURL = "./model/HDR_250.hdr";
 export const DRACO_URL =
   "https://www.gstatic.com/draco/versioned/decoders/1.5.6/";
 
 export const createScene = () => {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xFFFFFF);
+  scene.background = new THREE.Color(0xffffff);
   return scene;
 };
 
 export const createCamera = () => {
-  const aspectRatio = window.innerWidth / window.innerHeight;
   const viewport = window.innerWidth;
-  if (viewport > 768) {
-    const camera = new THREE.PerspectiveCamera(22, aspectRatio, 1, 1000);
-    camera.aspect = aspectRatio;
-    camera.updateProjectionMatrix();
-    camera.position.set(-10, 5, 180);
-    return camera;
-  } else {
-    const camera = new THREE.PerspectiveCamera(85, aspectRatio, 1, 2000);
-    camera.aspect = aspectRatio;
-    camera.updateProjectionMatrix();
-    camera.position.set(-10, 5, 120);
-    return camera;
-  }
+  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
+  const aspectRatio = window.innerWidth / height3d;
+  const camera = new THREE.PerspectiveCamera(60, aspectRatio, 1, 1000);
+  camera.aspect = aspectRatio;
+  camera.updateProjectionMatrix();
+  camera.position.set(-10, 5, 180);
+  return camera;
+  // } else {
+  //   const camera = new THREE.PerspectiveCamera(85, aspectRatio, 1, 2000);
+  //   camera.aspect = aspectRatio;
+  //   camera.updateProjectionMatrix();
+  //   camera.position.set(-10, 5, 120);
+  //   return camera;
+  // }
 };
 
 export const createRenderer = (mount: any) => {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   const viewport = window.innerWidth;
-  if (viewport > 768) {
-    renderer.setSize(window.innerWidth/1.7, window.innerHeight/1.6);
-  } else {
-    renderer.setSize(window.innerWidth, window.innerHeight/1.6);
-  }  
+  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
+  renderer.setSize(window.innerWidth, height3d);
   mount.innerHTML = "";
   mount.appendChild(renderer.domElement);
   return renderer;
@@ -63,8 +60,8 @@ export const loadModel = async (scene: THREE.Scene) => {
   try {
     gltf = await loader.loadAsync(MODEL_URL);
     gltfScene = gltf.scene;
-    gltfScene.position.y = 0;
-    gltfScene.position.x = 5000;
+    // gltfScene.position.y = 10;
+    // gltfScene.position.x = 5000;
     processModel(gltf.scene);
     scene.add(gltf.scene);
   } catch (error) {
@@ -138,6 +135,14 @@ const processModel = (model: any) => {
 
       if (name === "MIRROR") {
         child.material = mirrorMaterial1;
+      } else if (child.material && child.material.name === "LOGO_BULL") {
+        var alpha = textureLoader.load("./model/Bull_logo.png");
+        alpha.flipY = false;
+        child.material.map = alpha;
+      } else if (child.material && child.material.name === "LOGOS") {
+        var alpha = textureLoader.load("./model/sticker1.png");
+        alpha.flipY = false;
+        child.material.map = alpha;
       } else if (name === "lambert2") {
         const shadowTexture = textureLoader.load("./model/shadow.jpg");
         shadowTexture.flipY = false;
@@ -152,37 +157,55 @@ const processModel = (model: any) => {
 export const animate = (
   renderer: THREE.WebGLRenderer,
   scene: THREE.Scene,
-  camera: THREE.PerspectiveCamera
+  camera: THREE.PerspectiveCamera,
+  control3dactive = false
 ) => {
   // let startPositionX = 3000;
   // const endPositionX = 0;
   // const duration = 7000;
   // let startTime = null;
+  // console.log("control3dactive");
+  // console.log(control3dactive);
+  // const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+
+  // const points = [];
+  // points.push(new THREE.Vector3(3, 0, 0)); // Ponto inicial
+  // points.push(new THREE.Vector3(10, 10, 10)); // Ponto final
+  // const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+  // const line = new THREE.Line(geometry, material);
+  // scene.add(line);
 
   const renderLoop = (time: number) => {
     requestAnimationFrame(renderLoop);
-    //TESTES DE ANIMACAO
-    // if (gltfScene && time > 3000) {
-    if (gltfScene) {
-      //   if (!startTime) startTime = time;
-      //   const elapsedTime = time - startTime;
-      //   const progress = Math.min(elapsedTime / duration, 1);
-      // const easedProgress = easeInOutCubic(progress);
-      //   const posX =
-      //     startPositionX + (endPositionX - startPositionX) * easedProgress;
 
-      gltfScene.position.x = 0;
-      //   gltfScene.opacity = easedProgress;
-      //   // gltfScene.traverse((node) => {
-      //   //   if (node.isMesh && node.material) {
-      //   //     console.log(easedProgress);
-      //   //     node.material.opacity = easedProgress;
-      //   //   }
-      //   // });
+    if (gltfScene) {
+      // if (control3dactive) {
+      //   gltfScene.rotation.y += 0.01;
+      // }
+
+      const objectPosition = new THREE.Vector3();
+
+      gltfScene.getWorldPosition(objectPosition);
+
+      // Atualiza o segundo ponto da linha
+      // line.geometry.attributes.position.array[0] = objectPosition.x;
+      // line.geometry.attributes.position.array[1] = objectPosition.y;
+      // line.geometry.attributes.position.array[2] = objectPosition.z;
+      // line.geometry.attributes.position.needsUpdate = true;
+
+      // gltfScene.getWorldPosition(objectPosition);
+      // const verticeGlobal = objectPosition.applyMatrix4(gltfScene.matrixWorld);
+
+      // Atualiza a posição final da linha
+      // line.geometry.attributes.position.array[3] = objectPosition.x;
+      // line.geometry.attributes.position.array[4] = objectPosition.y;
+      // line.geometry.attributes.position.array[5] = objectPosition.z;
+      // line.geometry.attributes.position.needsUpdate = true;
     }
 
     renderer.render(scene, camera);
   };
-
+  requestAnimationFrame(renderLoop);
   renderLoop(0);
 };

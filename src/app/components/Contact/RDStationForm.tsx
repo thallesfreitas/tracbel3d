@@ -5,7 +5,6 @@ const RDStationForm = () => {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
   useEffect(() => {
-    // Verifique se o script já existe
     const existingScript = document.querySelector(
       `script[src="https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"]`
     );
@@ -32,9 +31,9 @@ const RDStationForm = () => {
 
   return (
     <div>
-      {isScriptLoaded && (
-        <div role="main" id="formulario-lp-bull-fa0a87d19bed140e6c2a"></div>
-      )}
+      {/* {isScriptLoaded && ( */}
+      <div role="main" id="formulario-lp-bull-fa0a87d19bed140e6c2a"></div>
+      {/* )} */}
     </div>
   );
 };
