@@ -7,11 +7,19 @@ import RDStationForm from "./RDStationForm";
 
 import { useGSAP } from "@gsap/react";
 import gsap, { Power3 } from "gsap";
+<<<<<<< HEAD
 // import { useInView } from "react-intersection-observer";
 const Contact = () => {
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
   // const [ref, inView] = useInView();
+=======
+import { useInView } from "react-intersection-observer";
+const Contact = () => {
+  const elementRef = useRef(null);
+  const containerAnimation = useRef<HTMLDivElement>(null);
+  const [ref, inView] = useInView();
+>>>>>>> 0c8d08bf64e6c4f48b33389224d5c53f5b2b4b01
   useGSAP(
     () => {
       setTimeout(() => {
@@ -51,11 +59,19 @@ const Contact = () => {
   return (
     <>
       <div
+<<<<<<< HEAD
         className="bg-contact bg-contact2 bg-cover mt-20 relative mb-5"
         ref={containerAnimation}
       >
         <Image
           src="images/grafismos.webp"
+=======
+        className="bg-contact bg-cover mt-20 relative mb-5"
+        ref={containerAnimation}
+      >
+        <Image
+          src="/images/grafismos.webp"
+>>>>>>> 0c8d08bf64e6c4f48b33389224d5c53f5b2b4b01
           alt="Icon"
           className="w-[40%] absolute bottom-0"
           width={300}
@@ -64,7 +80,11 @@ const Contact = () => {
         />
         <div
           className="w-full max-w-[90%] flex flex-row justify-between m-auto items-center pt-10 max-md:pt-5"
+<<<<<<< HEAD
           // ref={ref}
+=======
+          ref={ref}
+>>>>>>> 0c8d08bf64e6c4f48b33389224d5c53f5b2b4b01
         >
           <div className="w-[70%] max-md:w-full relative text-center max-md:flex max-md:justify-center">
             <p className="text-[45px] font-ubuntu leading-[50px] text-left text-black max-md:text-[22px] max-md:leading-7 fadeIn">
@@ -81,7 +101,11 @@ const Contact = () => {
             ref={elementRef}
           >
             <Image
+<<<<<<< HEAD
               src="images/banner-contactv2.webp"
+=======
+              src="/images/banner-contactv2.webp"
+>>>>>>> 0c8d08bf64e6c4f48b33389224d5c53f5b2b4b01
               alt="Icon"
               className="w-full z-10 relative"
               width={150}
@@ -98,7 +122,11 @@ const Contact = () => {
             <div className="box-form relative">
               <RDStationForm />
               <Image
+<<<<<<< HEAD
                 src="images/icon-ia.svg"
+=======
+                src="/images/icon-ia.svg"
+>>>>>>> 0c8d08bf64e6c4f48b33389224d5c53f5b2b4b01
                 alt="Icon"
                 className="absolute bottom-[10px] left-0"
                 width={45}

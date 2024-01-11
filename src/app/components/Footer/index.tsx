@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="w-full bg-white py-5 z-20">
         <div className="container flex flex-row items-center justify-center m-auto w-full border-t-2 border-t-[#989898] py-10 max-md:max-w-[90%]">
           <Image
-            src="images/logo-tracbel.svg"
+            src="/images/logo-tracbel.svg"
             alt="Logo"
             className=""
             width={164}
