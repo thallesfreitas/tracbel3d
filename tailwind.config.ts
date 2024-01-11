@@ -12,6 +12,8 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        footer: "url('/images/footer/bg-footer.png')",
+        contact: "url('/images/banner-form.webp')",
       },
       fontFamily: {
         abeezee: ["ABeeZee-Regular", "sans-serif"],
