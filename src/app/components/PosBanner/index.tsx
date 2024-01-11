@@ -17,15 +17,17 @@ const PosBanner = () => {
   useGSAP(
     () => {
       //seta elementos
-      // setTimeout(() => {
+      setTimeout(() => {
       gsap.set(".imgPosBannerRotate", { scale: 1.5, opacity: 0 });
       // gsap.set(".imgPosBannerArrow1", { x: -100, opacity: 0 });
       gsap.set(".imgPosBannerArrow2", { y: -300, opacity: 0 });
+      gsap.set(".imgBtnAtivar", { y: -300, opacity: 0 });
+      gsap.set(".imgBtnDesativar", { y: -300, opacity: 0 });
       gsap.set(".imgPosBannerOrnamento", { x: 150, opacity: 0 });
       gsap.set(".boxPosBannerInterativo", { x: -150, opacity: 0 });
-      // }, 100);
+      }, 100);
 
-      // setTimeout(() => {
+      setTimeout(() => {
       const tl = gsap
         .timeline()
         .fromTo(
@@ -53,11 +55,35 @@ const PosBanner = () => {
         ease: Power3.easeOut,
         scrollTrigger: {
           trigger: ".imgPosBannerArrow2",
-          start: "top 500px",
-          end: "top 200px",
+          start: "top 200px",
+          end: "top 100px",
           scrub: true,
         },
       });
+      // gsap.to(".imgBtnAtivar", {
+      //   opacity: 1,
+      //   y: 0,
+      //   duration: 1,
+      //   ease: Power3.easeOut,
+      //   scrollTrigger: {
+      //     trigger: ".imgBtnAtivar",
+      //     start: "top 200px",
+      //     end: "top 100px",
+      //     scrub: true,
+      //   },
+      // });
+      // gsap.to(".imgBtnDesativar", {
+      //   opacity: 1,
+      //   y: 0,
+      //   duration: 1,
+      //   ease: Power3.easeOut,
+      //   scrollTrigger: {
+      //     trigger: ".imgBtnDesativar",
+      //     start: "top 200px",
+      //     end: "top 100px",
+      //     scrub: true,
+      //   },
+      // });
       gsap.to(".imgPosBannerRotate", {
         opacity: 1,
         scale: 1,
@@ -99,14 +125,14 @@ const PosBanner = () => {
         trigger: ".imgPosBannerArrow1",
         animation: tl,
       });
-      // }, 200);
+      }, 200);
     },
     { scope: containerAnimation }
   );
   return (
     <>
       <div className="flex justify-center relative z-[130] ">
-        <div className="imgPosBannerRotate rotate relative mt-[100px] max-md:mt-[45px]">
+        <div className="imgPosBannerRotate opacity-0 rotate relative mt-[100px] max-md:mt-[45px]">
           <div className="img-rotate">
             <Image
               src="images/img-rotate.png"
@@ -171,6 +197,7 @@ const PosBanner = () => {
             {!control3dactive ? (
               <Image
                 src="images/bt-ativar.png"
+                className="imgBtnAtivar"
                 alt={""}
                 width={514}
                 height={89}
@@ -178,6 +205,7 @@ const PosBanner = () => {
             ) : (
               <Image
                 src="images/bt-desativar.png"
+                className="imgBtnDesativar"
                 alt={""}
                 width={504}
                 height={89}
