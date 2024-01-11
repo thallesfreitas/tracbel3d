@@ -21,8 +21,9 @@ const PosBanner = () => {
       gsap.set(".imgPosBannerRotate", { scale: 1.5, opacity: 0 });
       // gsap.set(".imgPosBannerArrow1", { x: -100, opacity: 0 });
       gsap.set(".imgPosBannerArrow2", { y: -300, opacity: 0 });
-      gsap.set(".imgBtnAtivar", { y: -300, opacity: 0 });
-      gsap.set(".imgBtnDesativar", { y: -300, opacity: 0 });
+      gsap.set(".imgBtnAtivar", {opacity: 0 });
+      gsap.set(".imgBtnDesativar", {opacity: 0 });
+      gsap.set(".imgRetroescavadeira", { x: 300, opacity: 0 });
       gsap.set(".imgPosBannerOrnamento", { x: 150, opacity: 0 });
       gsap.set(".boxPosBannerInterativo", { x: -150, opacity: 0 });
       }, 100);
@@ -60,30 +61,42 @@ const PosBanner = () => {
           scrub: true,
         },
       });
-      // gsap.to(".imgBtnAtivar", {
-      //   opacity: 1,
-      //   y: 0,
-      //   duration: 1,
-      //   ease: Power3.easeOut,
-      //   scrollTrigger: {
-      //     trigger: ".imgBtnAtivar",
-      //     start: "top 200px",
-      //     end: "top 100px",
-      //     scrub: true,
-      //   },
-      // });
-      // gsap.to(".imgBtnDesativar", {
-      //   opacity: 1,
-      //   y: 0,
-      //   duration: 1,
-      //   ease: Power3.easeOut,
-      //   scrollTrigger: {
-      //     trigger: ".imgBtnDesativar",
-      //     start: "top 200px",
-      //     end: "top 100px",
-      //     scrub: true,
-      //   },
-      // });
+      gsap.to(".imgBtnAtivar", {
+        opacity: 1,
+        // y: 0,
+        duration: 1,
+        ease: Power3.easeOut,
+        scrollTrigger: {
+          trigger: ".imgBtnAtivar",
+          start: "top 600px",
+          end: "top 100px",
+          scrub: true,
+        },
+      });
+      gsap.to(".imgBtnDesativar", {
+        opacity: 1,
+        // y: 0,
+        duration: 1,
+        ease: Power3.easeOut,
+        scrollTrigger: {
+          trigger: ".imgBtnDesativar",
+          start: "top 600px",
+          end: "top 100px",
+          scrub: true,
+        },
+      });
+      gsap.to(".imgRetroescavadeira", {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: Power3.easeOut,
+        scrollTrigger: {
+          trigger: ".imgRetroescavadeira",
+          start: "top 600px",
+          end: "top 100px",
+          scrub: true,
+        },
+      });
       gsap.to(".imgPosBannerRotate", {
         opacity: 1,
         scale: 1,
@@ -252,7 +265,7 @@ const PosBanner = () => {
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
-          <div className="w-full flex justify-center">
+          <div className="imgRetroescavadeira opacity-0 w-full flex justify-center">
             <Image
               src="images/retroescavadeira_small.webp"
               alt="Icon"
