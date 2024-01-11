@@ -87,7 +87,7 @@ const Gallery = () => {
       >
         <div className="imgGalleryArrow1 opacity-0 w-[25%] max-md:hidden">
           <Image
-            src="/images/arrows.svg"
+            src="images/arrows.svg"
             alt="Icon"
             className="max-w-[20%] -rotate-90 max-md:max-w-[100%]"
             width={100}
@@ -100,7 +100,7 @@ const Gallery = () => {
             Por dentro da cabine?
           </p>
           <Image
-            src="/images/arrows.svg"
+            src="images/arrows.svg"
             alt="Icon"
             className="max-w-[20%] hidden -rotate-90 max-md:flex max-md:max-w-[44px] absolute top-0"
             width={100}

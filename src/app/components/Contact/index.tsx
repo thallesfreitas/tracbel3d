@@ -7,11 +7,11 @@ import RDStationForm from "./RDStationForm";
 
 import { useGSAP } from "@gsap/react";
 import gsap, { Power3 } from "gsap";
-
+// import { useInView } from "react-intersection-observer";
 const Contact = () => {
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
-
+  // const [ref, inView] = useInView();
   useGSAP(
     () => {
       setTimeout(() => {
@@ -21,16 +21,6 @@ const Contact = () => {
             ".text1",
             { y: 100, opacity: 0 },
             { opacity: 1, y: 0, duration: 1, ease: Power3.easeOut }
-          )
-          .fromTo(
-            ".imgArrow1",
-            { x: 300, opacity: 0 },
-            { opacity: 1, x: 0, duration: 1, ease: Power3.easeOut, delay: -0.3 }
-          )
-          .fromTo(
-            ".imgArrow2",
-            { x: 300, opacity: 0 },
-            { opacity: 1, x: 0, duration: 1, ease: Power3.easeOut, delay: -0.3 }
           )
           .fromTo(
             ".imgContact",
@@ -60,52 +50,62 @@ const Contact = () => {
 
   return (
     <>
-      <div className="w-full max-w-[90%] flex flex-row justify-between m-auto items-center pt-20 max-md:pt-5">
-        <div className="w-[15%] max-md:hidden"></div>
-        <div className="w-[70%] max-md:w-full relative text-center max-md:flex max-md:justify-center">
-          <p className="text1 opacity-0 text-[45px] font-abeezee leading-[50px] text-black text-center max-md:text-[22px] max-md:leading-7 max-md:max-w-[50%] max-sm:max-w-[60%]">
-            Fale agora com nossos especialistas
-          </p>
-          <Image
-            src="/images/arrows.svg"
-            alt="Icon"
-            className="imgArrow1 opacity-0 max-lg:max-w-[44px] rotate-90 hidden max-md:block absolute top-2 right-0 max-sm:top-0"
-            width={150}
-            height={500}
-            loading="lazy"
-          />
-        </div>
-        <div className="w-[15%] flex justify-end pr-10 max-md:hidden">
-          <Image
-            src="/images/arrows.svg"
-            alt="Icon"
-            className="imgArrow2 opacity-0 max-w-[40%] rotate-90"
-            width={150}
-            height={500}
-            loading="lazy"
-          />
-        </div>
-      </div>
-      <div className="w-full max-w-[95%] flex flex-row justify-between items-center max-md:w-full max-md:flex-col-reverse">
+      <div
+        className="bg-contact bg-contact2 bg-cover mt-20 relative mb-5"
+        ref={containerAnimation}
+      >
+        <Image
+          src="images/grafismos.webp"
+          alt="Icon"
+          className="w-[40%] absolute bottom-0"
+          width={300}
+          height={500}
+          loading="lazy"
+        />
         <div
-          className="imgContact opacity-0 w-[70%] max-md:w-full"
-          ref={elementRef}
+          className="w-full max-w-[90%] flex flex-row justify-between m-auto items-center pt-10 max-md:pt-5"
+          // ref={ref}
         >
-          <Image
-            src="/images/banner-contact.webp"
-            alt="Icon"
-            className="w-full"
-            width={150}
-            height={500}
-            loading="lazy"
-          />
+          <div className="w-[70%] max-md:w-full relative text-center max-md:flex max-md:justify-center">
+            <p className="text-[45px] font-ubuntu leading-[50px] text-left text-black max-md:text-[22px] max-md:leading-7 fadeIn">
+              Descubra mais sobre a Bull conversando com{" "}
+              <strong className="text-bold">
+                BullGPT, nossa inteligência artificial especializada
+              </strong>
+            </p>
+          </div>
         </div>
-        <div className="w-[25%] max-md:w-[80%] max-md:my-5">
-          <p className="text2 opacity-0 text-[#1A374D] text-[16px]">
-            Gostou? Entre em contato e saiba mais.
-          </p>
-          <div className="form1 opacity-0">
-            <RDStationForm />
+        <div className="w-full max-w-[95%] flex flex-row justify-between items-center max-md:w-full max-md:flex-col-reverse">
+          <div
+            className="imgContact opacity-0 w-[70%] max-md:w-full"
+            ref={elementRef}
+          >
+            <Image
+              src="images/banner-contactv2.webp"
+              alt="Icon"
+              className="w-full z-10 relative"
+              width={150}
+              height={500}
+              loading="lazy"
+            />
+          </div>
+
+          <div className="w-[25%] max-md:w-[95%] max-md:my-5 -mt-[250px] max-md:mt-10">
+            <p className="text-[#1A374D] text-[18px] font-ubuntu mb-5">
+              <b>Cadastre-se,</b> acesse nossa IA e em breve, nossos
+              especialistas entrarão em contato para mais informações.
+            </p>
+            <div className="box-form relative">
+              <RDStationForm />
+              <Image
+                src="images/icon-ia.svg"
+                alt="Icon"
+                className="absolute bottom-[10px] left-0"
+                width={45}
+                height={45}
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </div>
