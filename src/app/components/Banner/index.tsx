@@ -96,7 +96,7 @@ const Banner = () => {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
-          <source src="images/bg-banner_small.mp4" type="video/mp4" />
+          <source src="images/bg-banner_v2.mp4" type="video/mp4" />
         </video>
 
         <div className="whiteBG z-[52] absolute w-full h-[84vh] bg-[#FFFFFF] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
