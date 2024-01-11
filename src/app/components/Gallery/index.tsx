@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import Carousel from "../../Carousel";
+import Carousel from "../Carousel";
 
 import { useGSAP } from "@gsap/react";
 import gsap, { Power3 } from "gsap";
