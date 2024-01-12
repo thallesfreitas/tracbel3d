@@ -18,126 +18,126 @@ const PosBanner = () => {
     () => {
       //seta elementos
       setTimeout(() => {
-      gsap.set(".imgPosBannerRotate", { scale: 1.5, opacity: 0 });
-      // gsap.set(".imgPosBannerArrow1", { x: -100, opacity: 0 });
-      gsap.set(".imgPosBannerArrow2", { y: -300, opacity: 0 });
-      gsap.set(".imgBtnAtivar", {opacity: 0 });
-      gsap.set(".imgBtnDesativar", {opacity: 0 });
-      gsap.set(".imgRetroescavadeira", { x: 300, opacity: 0 });
-      gsap.set(".imgPosBannerOrnamento", { x: 150, opacity: 0 });
-      gsap.set(".boxPosBannerInterativo", { x: -150, opacity: 0 });
+        gsap.set(".imgPosBannerRotate", { scale: 1.5, opacity: 0 });
+        // gsap.set(".imgPosBannerArrow1", { x: -100, opacity: 0 });
+        gsap.set(".imgPosBannerArrow2", { y: -300, opacity: 0 });
+        gsap.set(".imgBtnAtivar", { opacity: 0 });
+        gsap.set(".imgBtnDesativar", { opacity: 0 });
+        gsap.set(".imgRetroescavadeira", { x: 300, opacity: 0 });
+        gsap.set(".imgPosBannerOrnamento", { x: 150, opacity: 0 });
+        gsap.set(".boxPosBannerInterativo", { x: -150, opacity: 0 });
       }, 100);
 
       setTimeout(() => {
-      const tl = gsap
-        .timeline()
-        .fromTo(
-          ".textPosBanner1",
-          { y: 100, opacity: 0 },
-          { opacity: 1, y: 0, duration: 1, ease: Power3.easeOut }
-        );
-      //
-      // gsap.to(".imgPosBannerArrow1", {
-      //   opacity: 1,
-      //   x: 0,
-      //   duration: 1,
-      //   ease: Power3.easeOut,
-      //   scrollTrigger: {
-      //     trigger: ".imgPosBannerArrow1",
-      //     start: "top 600px",
-      //     end: "top 200px",
-      //     scrub: true,
-      //   },
-      // });
-      gsap.to(".imgPosBannerArrow2", {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: ".imgPosBannerArrow2",
-          start: "top 200px",
-          end: "top 100px",
-          scrub: true,
-        },
-      });
-      gsap.to(".imgBtnAtivar", {
-        opacity: 1,
-        // y: 0,
-        duration: 1,
-        ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: ".imgBtnAtivar",
-          start: "top 600px",
-          end: "top 100px",
-          scrub: true,
-        },
-      });
-      gsap.to(".imgBtnDesativar", {
-        opacity: 1,
-        // y: 0,
-        duration: 1,
-        ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: ".imgBtnDesativar",
-          start: "top 600px",
-          end: "top 100px",
-          scrub: true,
-        },
-      });
-      gsap.to(".imgRetroescavadeira", {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: ".imgRetroescavadeira",
-          start: "top 600px",
-          end: "top 100px",
-          scrub: true,
-        },
-      });
-      gsap.to(".imgPosBannerRotate", {
-        opacity: 1,
-        scale: 1,
-        duration: 0.7,
-        ease: Back.easeOut,
-        scrollTrigger: {
-          trigger: ".imgPosBannerRotate",
-          start: "top 500px",
-          end: "top 200px",
-          scrub: true,
-        },
-      });
-      gsap.to(".imgPosBannerOrnamento", {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: ".imgPosBannerOrnamento",
-          start: "top 500px",
-          end: "top 200px",
-          scrub: true,
-        },
-      });
-      gsap.to(".boxPosBannerInterativo", {
-        opacity: 1,
-        x: -60,
-        duration: 1,
-        ease: Power3.easeOut,
-        scrollTrigger: {
-          trigger: ".boxPosBannerInterativo",
-          start: "top 500px",
-          end: "top 200px",
-          scrub: true,
-        },
-      });
-      //
-      ScrollTrigger.create({
-        trigger: ".imgPosBannerArrow1",
-        animation: tl,
-      });
+        const tl = gsap
+          .timeline()
+          .fromTo(
+            ".textPosBanner1",
+            { y: 100, opacity: 0 },
+            { opacity: 1, y: 0, duration: 1, ease: Power3.easeOut }
+          );
+        //
+        // gsap.to(".imgPosBannerArrow1", {
+        //   opacity: 1,
+        //   x: 0,
+        //   duration: 1,
+        //   ease: Power3.easeOut,
+        //   scrollTrigger: {
+        //     trigger: ".imgPosBannerArrow1",
+        //     start: "top 600px",
+        //     end: "top 200px",
+        //     scrub: true,
+        //   },
+        // });
+        gsap.to(".imgPosBannerArrow2", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgPosBannerArrow2",
+            start: "top 200px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgBtnAtivar", {
+          opacity: 1,
+          // y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgBtnAtivar",
+            start: "top 600px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgBtnDesativar", {
+          opacity: 1,
+          // y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgBtnDesativar",
+            start: "top 600px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgRetroescavadeira", {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgRetroescavadeira",
+            start: "top 600px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgPosBannerRotate", {
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          ease: Back.easeOut,
+          scrollTrigger: {
+            trigger: ".imgPosBannerRotate",
+            start: "top 500px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgPosBannerOrnamento", {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgPosBannerOrnamento",
+            start: "top 500px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".boxPosBannerInterativo", {
+          opacity: 1,
+          x: -60,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".boxPosBannerInterativo",
+            start: "top 500px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        //
+        ScrollTrigger.create({
+          trigger: ".imgPosBannerArrow1",
+          animation: tl,
+        });
       }, 200);
     },
     { scope: containerAnimation }
@@ -261,11 +261,11 @@ const PosBanner = () => {
           ></iframe>
         </div> */}
       </div>
-      <div className="h-[60vh] z-0">
+      <div className="h-[60vh] z-0 flex justify-center align-items-center">
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
-          <div className="imgRetroescavadeira opacity-0 w-full flex justify-center">
+          <div className="imgRetroescavadeira opacity-0 w-full ">
             <Image
               src="images/retroescavadeira_small.webp"
               alt="Icon"
