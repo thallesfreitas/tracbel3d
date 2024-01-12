@@ -10,16 +10,30 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Gallery = () => {
   const slides = [
-    { img: "images/cabine/cabine1.webp" },
-    { img: "images/cabine/cabine2.webp" },
-    { img: "images/cabine/cabine3.webp" },
-    { img: "images/cabine/cabine4.webp" },
-    { img: "images/cabine/cabine5.webp" },
-    { img: "images/cabine/cabine6.webp" },
-    { img: "images/cabine/cabine7.webp" },
-    { img: "images/cabine/cabine8.webp" },
-    { img: "images/cabine/cabine9.webp" },
-    { img: "images/cabine/cabine10.webp" },
+    { 
+      img: "images/cabine/cabine1.webp",
+      subtitle: "Cabine rops - fops"
+    },
+    {
+        img: "images/cabine/cabine2.webp",
+        subtitle: "Alavancas acionadas por piloto"
+    },
+    {
+        img: "images/cabine/cabine3.webp",
+        subtitle: "Interruptores ergonomicamente distribuídos"
+    },
+    {
+        img: "images/cabine/cabine5.webp",
+        subtitle: "Ampla visibilidade. Volante ajustável"
+    },
+    {
+        img: "images/cabine/cabine8.webp",
+        subtitle: "Cabine com ar quente e frio"
+    },
+    {
+        img: "images/cabine/cabine9.webp",
+        subtitle: "Cabine com acesso amplo e 02 portas"
+    },
   ];
 
   // const elementRef = useRef(null);
