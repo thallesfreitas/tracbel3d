@@ -1,6 +1,17 @@
+"use client";
+
 import Image from "next/image";
 
+import { useRef } from "react";
+
+import { useGSAP } from "@gsap/react";
+import gsap, { Power3 } from "gsap";
+
 const Footer = () => {
+  
+  const elementRef = useRef(null);
+  const containerAnimation = useRef<HTMLDivElement>(null);
+
   const infos = [
     {
       img: "images/footer/icon1.svg",
@@ -28,9 +39,38 @@ const Footer = () => {
       subtitle: "vendidas nos últimos 10 anos",
     },
   ];
+
+
+  useGSAP(
+    () => {
+      //seta elementos
+      // setTimeout(() => {
+      //   gsap.set(".imgLogoTracbel", { y: 200, opacity: 0 });
+      //   gsap.set(".allIcons", { opacity: 0 });
+      // }, 100);
+
+    //   setTimeout(() => {
+    //     gsap.to(".allIcons", {
+    //       opacity: 1,
+    //       duration: 1,
+    //       ease: Power3.easeOut,
+    //       scrollTrigger: {
+    //         trigger: ".allIcons",
+    //         // start: "top top",
+    //         // end: "top 10px",
+    //         scrub: true,
+    //         markers: true,
+    //       },
+    //     });
+    // }, 200)
+  },
+  { scope: containerAnimation }
+  );
+
+
   return (
     <>
-      <div className="w-full bg-white py-5 z-20">
+      <div className="allContact w-full bg-white py-5 z-20">
         <div className="container flex flex-row items-center justify-center m-auto w-full border-t-2 border-t-[#989898] py-10 max-md:max-w-[90%]">
           <Image
             src="/images/logo-tracbel.svg"
@@ -41,7 +81,7 @@ const Footer = () => {
             loading="lazy"
           />
         </div>
-        <div className="w-full max-w-[90%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around">
+        <div className="allIcons w-full max-w-[90%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around">
           {infos.map((info, index) => (
             <div key={index} className="flex flex-col items-center">
               <div className="h-[90px] flex items-center">

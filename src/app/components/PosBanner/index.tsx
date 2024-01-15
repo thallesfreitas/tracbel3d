@@ -36,19 +36,6 @@ const PosBanner = () => {
             { y: 100, opacity: 0 },
             { opacity: 1, y: 0, duration: 1, ease: Power3.easeOut }
           );
-        //
-        // gsap.to(".imgPosBannerArrow1", {
-        //   opacity: 1,
-        //   x: 0,
-        //   duration: 1,
-        //   ease: Power3.easeOut,
-        //   scrollTrigger: {
-        //     trigger: ".imgPosBannerArrow1",
-        //     start: "top 600px",
-        //     end: "top 200px",
-        //     scrub: true,
-        //   },
-        // });
         gsap.to(".imgPosBannerArrow2", {
           opacity: 1,
           y: 0,

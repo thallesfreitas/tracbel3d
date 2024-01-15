@@ -1,21 +1,54 @@
 "use client";
 
-import { useRef } from "react";
+import Image from "next/image";
+import { useRef, useState } from "react";
+import ThreeScene from "../../components/Obj3d/ThreeScene";
+
+import { useGSAP } from "@gsap/react";
+import gsap, { Back, Power3 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Video = () => {
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
 
-  // useGSAP(() => {
-  //   setTimeout(() => {
-  //     gsap.timeline()
-  //         .fromTo('.text1', {y:100, opacity:0}, {opacity:1, y:0, duration:1, ease:Power3.easeOut})
-  //         .fromTo('.video', {y:-100, opacity:0}, {opacity:1, y:0, duration:1, ease:Power3.easeOut, delay:-.3})
-  //   }, 6000)
+  useGSAP(
+    () => {
+      //seta elementos
+      setTimeout(() => {
+        gsap.set(".txtTitleVideo", { y: 200, opacity: 0 });
+        gsap.set(".vidPatrola", { x: 200, opacity: 0 });
+      }, 100);
 
-  // },
-  // { scope: containerAnimation }
-  // );
+      setTimeout(() => {
+      gsap.to(".txtTitleVideo", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: Power3.easeOut,
+        scrollTrigger: {
+          trigger: ".txtTitleVideo",
+          start: "top 600px",
+          end: "top 100px",
+          // scrub: true,
+        },
+      });
+      gsap.to(".vidPatrola", {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: Power3.easeOut,
+        scrollTrigger: {
+          trigger: ".vidPatrola",
+          start: "top 400px",
+          end: "top 100px",
+          scrub: true,
+        },
+      });
+    }, 200)
+  },
+  { scope: containerAnimation }
+  );
 
   return (
     <>
@@ -23,13 +56,13 @@ const Video = () => {
         className="w-full max-w-[90%] flex flex-col justify-center m-auto pt-20 max-md:max-w-[100%]"
         ref={elementRef}
       >
-        <div className="text1 opacity-0 mb-10 max-md:px-5 max-md:mb-5 flex justify-center">
+        <div className="txtTitleVideo opacity-0 mb-10 max-md:px-5 max-md:mb-5 flex justify-center">
           <p className="text-[27px] font-abeezee leading-[40px] text-black text-center max-md:text-[20px] max-w-[69vw] max-md:max-w-[100vw]">
             A HD96 e a D100 4X4 Bull Machines são as novas retroescavadeiras com
             o selo de qualidade e confiança Tracbel. Confira a máquina em ação:
           </p>
         </div>
-        <div className="video_youtube w-full">
+        <div className="vidPatrola opacity-0 video_youtube w-full">
           <iframe
             src="https://www.youtube.com/embed/hNrGZozxJW4?si=Sn0rjBDvSuu95mWg"
             title="YouTube video player"
