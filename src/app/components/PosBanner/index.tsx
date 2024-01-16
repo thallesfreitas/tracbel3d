@@ -252,7 +252,7 @@ const PosBanner = () => {
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
-          <div className="imgRetroescavadeira opacity-0 w-full ">
+          <div className="imgRetroescavadeira w-full ">
             <Image
               src="images/retroescavadeira_small.webp"
               alt="Icon"
