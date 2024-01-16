@@ -565,3 +565,16 @@ select {
   display: flex;
   justify-content: center;
 }
+
+.imgRetroescavadeira{
+  align-self:center;
+}
+
+@media screen and (max-width: 768px) {
+  .imgMobile {
+    height: 40vh;
+  }
+  .imgRetroescavadeira{
+    align-self:flex-end;
+  }
+}

@@ -248,11 +248,11 @@ const PosBanner = () => {
           ></iframe>
         </div> */}
       </div>
-      <div className="h-[60vh] z-0 flex justify-center align-items-center">
+      <div className="imgMobile h-[50vh] z-0 flex justify-center align-items-center">
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
-          <div className="imgRetroescavadeira w-full ">
+          <div className="imgRetroescavadeira w-full align-self-center">
             <Image
               src="images/retroescavadeira_small.webp"
               alt="Icon"
