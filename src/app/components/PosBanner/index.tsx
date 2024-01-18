@@ -110,7 +110,7 @@ const PosBanner = () => {
         });
         gsap.to(".boxPosBannerInterativo", {
           opacity: 1,
-          x: -60,
+          x: 50,
           duration: 1,
           ease: Power3.easeOut,
           scrollTrigger: {
@@ -131,7 +131,7 @@ const PosBanner = () => {
   );
   return (
     <>
-      <div className="flex justify-center relative z-[130] ">
+      <div className="flex justify-center relative z-[130] max-md:mt-10">
         <div className="imgPosBannerRotate opacity-0 rotate relative mt-[100px] max-md:mt-[45px]">
           <div className="img-rotate">
             <Image
@@ -181,7 +181,7 @@ const PosBanner = () => {
           <Image
             src="images/arrows.svg"
             alt="Icon"
-            className="imgPosBannerArrow2 opacity-0 max-w-[50%] max-md:max-w-[10%] max-md:-mt-[150px]"
+            className="imgPosBannerArrow2 opacity-0 max-w-[50%] max-md:max-w-[10%] max-md:-mt-[90px]"
             width={140}
             height={500}
             loading="lazy"
@@ -196,19 +196,19 @@ const PosBanner = () => {
           >
             {!control3dactive ? (
               <Image
-                src="images/bt-ativar.png"
+                src="images/bt-ativar2.png"
                 className="imgBtnAtivar"
                 alt={""}
-                width={514}
-                height={89}
+                width={110}
+                height={110}
               />
             ) : (
               <Image
-                src="images/bt-desativar.png"
+                src="images/bt-desativar2.png"
                 className="imgBtnDesativar"
                 alt={""}
-                width={504}
-                height={89}
+                width={110}
+                height={110}
               />
             )}
           </div>

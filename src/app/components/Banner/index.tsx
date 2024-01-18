@@ -111,8 +111,8 @@ const Banner = () => {
           <p className="textHeaderIntro text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw] opacity-0">
             seu negócio!
           </p>
-          <h1 className="textHeaderIntro text-[6.3vw] font-abeezee leading-[4vw] mt-10 mb-10 text-white max-md:mt-5 max-md:mb-10 2xl:text-[6vw] 2xl:leading-[5vw] opacity-0">
-            HD96 E HD100 4X4
+          <h1 className="textHeaderIntro text-[6vw] font-abeezee leading-[6vw] mt-5 mb-10 text-white max-md:mt-5 max-md:mb-10 2xl:text-[6vw] 2xl:leading-[5vw] opacity-0">
+            HD96 E <br className="max-md:hidden"/>HD100 4X4
           </h1>
           <div className="textHeaderCTA opacity-0">
             {/* <button className="btn" onClick={scrollToSection}> */}
@@ -123,9 +123,9 @@ const Banner = () => {
             </button>
           </div>
         </div>
-        <div className="imageHeaderTrator absolute  max-md:top-auto max-lg:-bottom-[145px] max-md:-bottom-[120px] max-sm:-bottom-[60px] w-[100%] opacity-0">
+        <div className="imageHeaderTrator absolute right-[-25px] bottom-[-85px] max-md:top-auto max-lg:-bottom-[145px] max-md:-bottom-[120px] max-sm:-bottom-[60px] w-[75%] opacity-0">
           <Image
-            src="images/trator2.webp"
+            src="images/trator3.webp"
             alt="Icon"
             className="w-full"
             width={150}
