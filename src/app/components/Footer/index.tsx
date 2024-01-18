@@ -24,11 +24,6 @@ const Footer = () => {
       subtitle: "espalhados pelo Brasil",
     },
     {
-      img: "images/footer/icon3.svg",
-      title: "+1000",
-      subtitle: "colaboradores",
-    },
-    {
       img: "images/footer/icon4.svg",
       title: "+100.000 skus",
       subtitle: "no E-commerce",

@@ -12,6 +12,14 @@ const Header = () => {
       >
         <div className="container flex flex-row items-center w-full max-md:px-5">
           <Image
+            src="/images/logo-tracbel.svg"
+            alt="Logo"
+            className="mr-10"
+            width={164}
+            height={54}
+            loading="lazy"
+          />
+          <Image
             src="images/logo.svg"
             alt="Logo"
             className=""

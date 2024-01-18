@@ -9,12 +9,12 @@ import gsap from "gsap";
 import Image from "next/image";
 
 const Banner = () => {
-  // const scrollToSection = () => {
-  //   const section = document.getElementById("secao");
-  //   if (section) {
-  //     section.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // };
+  const scrollToSection = () => {
+    const section = document.getElementById("secao");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const containerAnimation = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -99,8 +99,8 @@ const Banner = () => {
           <source src="images/bg-banner_v2.mp4" type="video/mp4" />
         </video>
 
-        <div className="whiteBG z-[52] absolute w-full h-[84vh] bg-[#FFFFFF] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
-        <div className="orangeBG z-50 absolute w-full h-[84vh] bg-[#ff2e00] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
+        <div className="whiteBG z-[12] absolute w-full h-[84vh] bg-[#FFFFFF] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
+        <div className="orangeBG z-20 absolute w-full h-[84vh] bg-[#ff2e00] bg-cover bg-no-repeat flex items-center flex-col z-1 max-lg:h-[36vh] max-sm:h-[32vh] "></div>
         <div className="container pt-20 w-[80%] z-20 max-md:pt-8 max-md:w-full max-md:px-5 z-2">
           <p className="textHeaderIntro text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw] opacity-0">
             Chegou a retroescavadeira que
@@ -111,12 +111,12 @@ const Banner = () => {
           <p className="textHeaderIntro text-[3vw] font-abeezee leading-[2.5rem] 2xl:leading-[3.5rem] text-white max-md:text-[6vw] max-md:leading-8 2xl:text-[3vw] opacity-0">
             seu negócio!
           </p>
-          <h1 className="textHeaderIntro text-[7vw] font-abeezee leading-[4vw] mt-10 mb-10 text-white max-md:mt-5 max-md:mb-10 2xl:text-[6vw] 2xl:leading-[5vw] opacity-0">
-            HD96 E D100 4X4
+          <h1 className="textHeaderIntro text-[6.3vw] font-abeezee leading-[4vw] mt-10 mb-10 text-white max-md:mt-5 max-md:mb-10 2xl:text-[6vw] 2xl:leading-[5vw] opacity-0">
+            HD96 E HD100 4X4
           </h1>
           <div className="textHeaderCTA opacity-0">
             {/* <button className="btn" onClick={scrollToSection}> */}
-            <button className="btn">
+            <button className="btn" onClick={scrollToSection}>
               <span className="btn-revert font-ubuntu font-bold text-[17px] text-white">
                 Conheça
               </span>

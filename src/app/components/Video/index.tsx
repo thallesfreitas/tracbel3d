@@ -58,7 +58,7 @@ const Video = () => {
       >
         <div className="txtTitleVideo opacity-0 mb-10 max-md:px-5 max-md:mb-5 flex justify-center">
           <p className="text-[27px] font-abeezee leading-[40px] text-black text-center max-md:text-[20px] max-w-[69vw] max-md:max-w-[100vw]">
-            A HD96 e a D100 4X4 Bull Machines são as novas retroescavadeiras com
+            A HD96 e a HD100 4X4 Bull Machines são as novas retroescavadeiras com
             o selo de qualidade e confiança Tracbel. Confira a máquina em ação:
           </p>
         </div>
