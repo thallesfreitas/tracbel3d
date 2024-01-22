@@ -22,10 +22,10 @@ const Gallery = () => {
         img: "images/galeria-final/cabine3.webp",
         subtitle: "Interruptores ergonomicamente distribuídos"
     },
-    // {
-    //     img: "images/cabine/cabine5.webp",
-    //     subtitle: "Ampla visibilidade. Volante ajustável"
-    // },
+    {
+        img: "images/galeria-final/cabine5.webp",
+        subtitle: "Ampla visibilidade do operador"
+    },
     {
         img: "images/galeria-final/cabine8.webp",
         subtitle: "Cabine com ar quente e frio"
