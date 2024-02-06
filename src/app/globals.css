@@ -505,7 +505,7 @@ select {
   -moz-transform: skew(360deg);
   -o-transform: skew(360deg);
   background: transparent;
-  border: 1px solid #ffc000;
+  border: 1px solid #EC3237;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -576,5 +576,27 @@ select {
   }
   .imgRetroescavadeira{
     align-self:flex-end;
+  }
+}
+
+.text-shadow {
+  text-shadow: 2px 5px 2px rgba(0,0,0,0.5);
+}
+
+div#rd-row-l3vwl62r {
+  width: 60%;
+}
+
+.btn-gpt {
+  width: 200px;
+}
+
+.btn-gpt::after {
+  width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  div#rd-row-l3vwl62r {
+    width: 90%;
   }
 }

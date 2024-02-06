@@ -32,8 +32,26 @@ const Footer = () => {
       img: "images/footer/icon5.svg",
       title: "+12.000 máquinas",
       subtitle: "vendidas nos últimos 10 anos",
-    },
+    }
   ];
+
+  const infos2 = [
+    {
+      img: "images/footer/icon6.svg",
+      title: "Assistência Técnica",
+      subtitle: "e Pós Venda exclusivos Bull",
+    },
+    {
+      img: "images/footer/icon7.svg",
+      title: "Treinamentos",
+      subtitle: "específicos para Mecânicos",
+    },
+    {
+      img: "images/footer/icon8.svg",
+      title: "Selo de qualidade",
+      subtitle: "Tracbel",
+    }
+  ]
 
 
   useGSAP(
@@ -76,9 +94,9 @@ const Footer = () => {
             loading="lazy"
           />
         </div>
-        <div className="allIcons w-full max-w-[90%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around">
+        <div className="allIcons w-full max-w-[70%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around max-md:max-w-[95%]">
           {infos.map((info, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className="flex flex-col items-center max-md:w-[50%] max-md:text-center max-md:mb-5">
               <div className="h-[90px] flex items-center">
                 <Image
                   src={info.img}
@@ -93,6 +111,28 @@ const Footer = () => {
                 {info.title}
               </p>
               <p className="text-black font-archivo text-[17px] -mt-[2px]">
+                {info.subtitle}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="allIcons w-full max-w-[60%] m-auto mt-10 flex justify-between max-md:flex-wrap max-md:justify-around max-md:max-w-[95%] max-md:mt-0">
+          {infos2.map((info, index) => (
+            <div key={index} className="flex flex-col items-center max-md:w-[50%] max-md:text-center max-md:mb-5">
+              <div className="h-[90px] flex items-center">
+                <Image
+                  src={info.img}
+                  alt="Logo"
+                  className="object-contain"
+                  width={55}
+                  height={55}
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-black font-archivo-black font-extrabold text-[22px]">
+                {info.title}
+              </p>
+              <p className="text-black font-archivo text-center leading-5 w-[80%] text-[17px] -mt-[2px]">
                 {info.subtitle}
               </p>
             </div>

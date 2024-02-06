@@ -53,7 +53,7 @@ const Video = () => {
   return (
     <>
       <div
-        className="w-full max-w-[90%] flex flex-col justify-center m-auto pt-20 max-md:max-w-[100%]"
+        className="w-full max-w-[95%] flex flex-col justify-center m-auto pt-20"
         ref={elementRef}
       >
         <div className="txtTitleVideo opacity-0 mb-10 max-md:px-5 max-md:mb-5 flex justify-center">

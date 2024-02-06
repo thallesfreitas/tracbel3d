@@ -264,7 +264,7 @@ const PosBanner = () => {
           </div>
         )}
       </div>
-      <div
+      {/* <div
         className="relative z-[102] imgPosBannerOrnamento opacity-0 flex justify-end max-md:hidden"
         ref={elementRef}
       >
@@ -276,6 +276,49 @@ const PosBanner = () => {
           height={500}
           priority
         />
+      </div> */}
+      <div className="relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6">
+        <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
+          <div className="flex items-center max-md:mb-6">
+            <div className="bg-white w-[60px] h-[60px] rounded-full relative">
+              <Image
+                src="images/check.svg"
+                alt="Icon"
+                className="absolute left-3 bottom-2"
+                width={55}
+                height={55}
+                priority
+              />
+            </div>
+            <p className="font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior altura de <br/>descarga no mercado</p>
+          </div>
+          <div className="flex items-center max-md:mb-6">
+            <div className="bg-white w-[60px] h-[60px] rounded-full relative">
+              <Image
+                src="images/check.svg"
+                alt="Icon"
+                className="absolute left-3 bottom-2"
+                width={55}
+                height={55}
+                priority
+              />
+            </div>
+            <p className="font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior força de escavação <br/>da caçamba frontal e traseira</p>
+          </div>
+          <div className="flex items-center">
+            <div className="bg-white w-[60px] h-[60px] rounded-full relative">
+              <Image
+                src="images/check.svg"
+                alt="Icon"
+                className="absolute left-3 bottom-2"
+                width={55}
+                height={55}
+                priority
+              />
+            </div>
+            <p className="font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior vazão <br/>hidráulica</p>
+          </div>
+        </div>
       </div>
     </>
   );

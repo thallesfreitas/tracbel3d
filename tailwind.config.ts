@@ -15,6 +15,7 @@ const config: Config = {
         footer: "url('images/footer/bg-footer.png')",
         contact: "url('/images/form/banner-form.webp')",
         contact2: "url('/projetos/tracbel/lp/images/form/banner-form.webp')",
+        contactIa: "url('/images/fundo-ia.jpg')",
       },
       fontFamily: {
         abeezee: ["ABeeZee-Regular", "sans-serif"],
