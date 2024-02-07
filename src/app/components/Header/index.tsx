@@ -20,7 +20,7 @@ const Header = () => {
             loading="lazy"
           />
           <Image
-            src="/images/logo-tracbel.svg"
+            src="images/logo-tracbel.svg"
             alt="Logo"
             className="mr-10"
             width={164}
