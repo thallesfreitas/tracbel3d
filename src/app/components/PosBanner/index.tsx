@@ -26,6 +26,13 @@ const PosBanner = () => {
         gsap.set(".imgRetroescavadeira", { x: 300, opacity: 0 });
         gsap.set(".imgPosBannerOrnamento", { x: 150, opacity: 0 });
         gsap.set(".boxPosBannerInterativo", { x: -150, opacity: 0 });
+        gsap.set(".barDetalhes", { y: 150, opacity: 0 });
+        gsap.set(".imgCheck1", { scale: 1.5, opacity: 0 });
+        gsap.set(".imgCheck2", { scale: 1.5, opacity: 0 });
+        gsap.set(".imgCheck3", { scale: 1.5, opacity: 0 });
+        gsap.set(".txtCheck1", { x: 50, opacity: 0 });
+        gsap.set(".txtCheck2", { x: 50, opacity: 0 });
+        gsap.set(".txtCheck3", { x: 50, opacity: 0 });
       }, 100);
 
       setTimeout(() => {
@@ -116,6 +123,90 @@ const PosBanner = () => {
           scrollTrigger: {
             trigger: ".boxPosBannerInterativo",
             start: "top 500px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".barDetalhes", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".barDetalhes",
+            start: "top 750px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgCheck1", {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgCheck1",
+            start: "top 670px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgCheck2", {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgCheck2",
+            start: "top 620px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".imgCheck3", {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgCheck3",
+            start: "top 570px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".txtCheck1", {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".txtCheck1",
+            start: "top 670px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".txtCheck2", {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".txtCheck2",
+            start: "top 620px",
+            end: "top 200px",
+            scrub: true,
+          },
+        });
+        gsap.to(".txtCheck3", {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".txtCheck3",
+            start: "top 570px",
             end: "top 200px",
             scrub: true,
           },
@@ -277,10 +368,10 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6">
+      <div className="barDetalhes relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
-            <div className="bg-white w-[60px] h-[60px] rounded-full relative">
+            <div className="imgCheck1 bg-white w-[60px] h-[60px] rounded-full relative">
               <Image
                 src="images/check.svg"
                 alt="Icon"
@@ -290,10 +381,10 @@ const PosBanner = () => {
                 priority
               />
             </div>
-            <p className="font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior altura de <br/>descarga no mercado</p>
+            <p className="txtCheck1 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior altura de <br/>descarga no mercado</p>
           </div>
           <div className="flex items-center max-md:mb-6">
-            <div className="bg-white w-[60px] h-[60px] rounded-full relative">
+            <div className="imgCheck2 bg-white w-[60px] h-[60px] rounded-full relative">
               <Image
                 src="images/check.svg"
                 alt="Icon"
@@ -303,10 +394,10 @@ const PosBanner = () => {
                 priority
               />
             </div>
-            <p className="font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior força de escavação <br/>da caçamba frontal e traseira</p>
+            <p className="txtCheck2 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior força de escavação <br/>da caçamba frontal e traseira</p>
           </div>
           <div className="flex items-center">
-            <div className="bg-white w-[60px] h-[60px] rounded-full relative">
+            <div className="imgCheck3 bg-white w-[60px] h-[60px] rounded-full relative">
               <Image
                 src="images/check.svg"
                 alt="Icon"
@@ -316,7 +407,7 @@ const PosBanner = () => {
                 priority
               />
             </div>
-            <p className="font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior vazão <br/>hidráulica</p>
+            <p className="txtCheck3 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior vazão <br/>hidráulica</p>
           </div>
         </div>
       </div>
