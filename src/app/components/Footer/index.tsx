@@ -72,9 +72,9 @@ const Footer = () => {
           ease: Power3.easeOut,
           scrollTrigger: {
             trigger: ".logoTracbel",
-            start: "top 600px",
-            end: "top 100px",
-            scrub: true,
+            start: "top 800px",
+            end: "top 400px",
+            scrub: true
           },
         });
         gsap.to(".allIcons_1", {
@@ -84,9 +84,9 @@ const Footer = () => {
           ease: Power3.easeOut,
           scrollTrigger: {
             trigger: ".allIcons_1",
-            start: "top 600px",
-            end: "top 100px",
-            scrub: true,
+            start: "top 800px",
+            end: "top 400px",
+            scrub: true
           },
         });
         gsap.to(".allIcons_2", {
@@ -96,9 +96,9 @@ const Footer = () => {
           ease: Power3.easeOut,
           scrollTrigger: {
             trigger: ".allIcons_1",
-            start: "top 500px",
-            end: "top 100px",
-            scrub: true,
+            start: "top 800px",
+            end: "top 400px",
+            scrub: true
           },
         });
       }, 200);
