@@ -5,10 +5,13 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import { useGSAP } from "@gsap/react";
+import gsap, { Back, Power3 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Footer = () => {
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(ScrollTrigger);
 
   const infos = [
     {
@@ -51,35 +54,62 @@ const Footer = () => {
     },
   ];
 
+ 
   useGSAP(
     () => {
       //seta elementos
-      // setTimeout(() => {
-      //   gsap.set(".imgLogoTracbel", { y: 200, opacity: 0 });
-      //   gsap.set(".allIcons", { opacity: 0 });
-      // }, 100);
-      //   setTimeout(() => {
-      //     gsap.to(".allIcons", {
-      //       opacity: 1,
-      //       duration: 1,
-      //       ease: Power3.easeOut,
-      //       scrollTrigger: {
-      //         trigger: ".allIcons",
-      //         // start: "top top",
-      //         // end: "top 10px",
-      //         scrub: true,
-      //         markers: true,
-      //       },
-      //     });
-      // }, 200)
+      setTimeout(() => {
+        gsap.set(".logoTracbel", { y: 200, opacity: 0 });
+        gsap.set(".allIcons_1", { y: 200, opacity: 0 });
+        gsap.set(".allIcons_2", { y: 200, opacity: 0 });
+      }, 100);
+
+      setTimeout(() => {
+        gsap.to(".logoTracbel", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".logoTracbel",
+            start: "top 600px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+        gsap.to(".allIcons_1", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".allIcons_1",
+            start: "top 600px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+        gsap.to(".allIcons_2", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".allIcons_1",
+            start: "top 500px",
+            end: "top 100px",
+            scrub: true,
+          },
+        });
+      }, 200);
     },
     { scope: containerAnimation }
   );
 
   return (
     <>
-      <div className="allContact w-full bg-white py-5 z-20">
-        <div className="container flex flex-row items-center justify-center m-auto w-full border-t-2 border-t-[#989898] py-10 max-md:max-w-[90%]">
+      <div className="allBoxFooter w-full bg-white py-5 z-20">
+        <div className="logoTracbel container flex flex-row items-center justify-center m-auto w-full border-t-2 border-t-[#989898] py-10 max-md:max-w-[90%]">
           <Image
             src="images/logo-tracbel.svg"
             alt="Logo"
@@ -89,7 +119,7 @@ const Footer = () => {
             loading="lazy"
           />
         </div>
-        <div className="allIcons w-full max-w-[70%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around max-md:max-w-[95%]">
+        <div className="allIcons_1 w-full max-w-[70%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around max-md:max-w-[95%]">
           {infos.map((info, index) => (
             <div
               key={index}
@@ -114,7 +144,7 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="allIcons w-full max-w-[60%] m-auto mt-10 flex justify-between max-md:flex-wrap max-md:justify-around max-md:max-w-[95%] max-md:mt-0">
+        <div className="allIcons_2 w-full max-w-[60%] m-auto mt-10 flex justify-between max-md:flex-wrap max-md:justify-around max-md:max-w-[95%] max-md:mt-0">
           {infos2.map((info, index) => (
             <div
               key={index}

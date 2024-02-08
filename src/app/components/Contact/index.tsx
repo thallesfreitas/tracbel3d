@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
-
-import { useRef } from "react";
-import RDStationForm from "./RDStationForm";
+import { useRef, useState } from "react";
+import ThreeScene from "../../components/Obj3d/ThreeScene";
 
 import { useGSAP } from "@gsap/react";
-import gsap, { Power3 } from "gsap";
+import gsap, { Back, Power3 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import RDStationForm from "./RDStationForm";
+
 // import { useInView } from "react-intersection-observer";
 const Contact = () => {
   const elementRef = useRef(null);
@@ -26,6 +29,8 @@ const Contact = () => {
         // gsap.set(".imgBGContact", { x: -200, opacity: 0 });
         gsap.set(".txtTitleForm", { x: 200, opacity: 0 });
         gsap.set(".allForm", { y: 200, opacity: 0 });
+        gsap.set(".boxContato", { opacity: 0 });
+        gsap.set(".imgBGContact", { opacity: 0 });
       }, 100);
 
       setTimeout(() => {
@@ -60,6 +65,26 @@ const Contact = () => {
           ease: Power3.easeOut,
           scrollTrigger: {
             trigger: ".txtTitleForm",
+            start: "top 900px",
+            end: "top 100px",
+          },
+        });
+        gsap.to(".boxContato", {
+          opacity: 1,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".boxContato",
+            start: "top 900px",
+            end: "top 100px",
+          },
+        });
+        gsap.to(".imgBGContact", {
+          opacity: 1,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".imgBGContact",
             start: "top 900px",
             end: "top 100px",
           },
@@ -132,7 +157,7 @@ const Contact = () => {
               </button>
             </div>
           </div>
-          <div className="w-[38%] min-h-[800px] py-8 bg-gradient-to-b from-[#FFC000] to-[#FF9900] flex flex-col justify-center items-center max-md:w-[100%] max-md:my-5 max-md:mt-5 relative">
+          <div className="boxContato w-[38%] min-h-[800px] py-8 bg-gradient-to-b from-[#FFC000] to-[#FF9900] flex flex-col justify-center items-center max-md:w-[100%] max-md:my-5 max-md:mt-5 relative">
             <Image
               src="images/grafismo-white.svg"
               alt="Icon"
