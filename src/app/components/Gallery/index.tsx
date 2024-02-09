@@ -10,29 +10,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Gallery = () => {
   const slides = [
-    { 
+    {
       img: "images/galeria-final/cabine1.webp",
-      subtitle: "Cabine rops - fops"
+      subtitle: "Cabine rops - fops",
     },
     {
-        img: "images/galeria-final/cabine2.webp",
-        subtitle: "Alavancas acionadas por piloto"
+      img: "images/galeria-final/cabine2.webp",
+      subtitle: "Alavancas acionadas por piloto",
     },
     {
-        img: "images/galeria-final/cabine3.webp",
-        subtitle: "Interruptores ergonomicamente distribuídos"
+      img: "images/galeria-final/cabine3.webp",
+      subtitle: "Interruptores ergonomicamente distribuídos",
     },
     {
-        img: "images/galeria-final/cabine5.webp",
-        subtitle: "Ampla visibilidade do operador"
+      img: "images/galeria-final/cabine5.webp",
+      subtitle: "Ampla visibilidade do operador",
     },
     {
-        img: "images/galeria-final/cabine8.webp",
-        subtitle: "Cabine com ar quente e frio"
+      img: "images/galeria-final/cabine8.webp",
+      subtitle: "Cabine com ar quente e frio",
     },
     {
-        img: "images/galeria-final/cabine9.webp",
-        subtitle: "Cabine com acesso amplo e 02 portas"
+      img: "images/galeria-final/cabine9.webp",
+      subtitle: "Cabine com acesso amplo e 02 portas",
     },
   ];
 
@@ -95,7 +95,7 @@ const Gallery = () => {
   return (
     <>
       <div
-        className="w-full max-w-[90%] flex flex-row m-auto items-center pt-20 max-md:pt-4"
+        className="w-full max-w-[90%] flex flex-row m-auto items-center pt-20 max-md:pt-4 relative z-[0]"
         // ref={elementRef}
         ref={containerAnimation}
       >

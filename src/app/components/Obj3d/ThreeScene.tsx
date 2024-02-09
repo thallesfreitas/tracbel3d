@@ -68,12 +68,16 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
 
   return (
     <>
-      {!control3dactive && (
+      {/* {!control3dactive && (
         <div className="class-teste w-full h-[100vh] absolute md:top-[80vh] top-[60vh] z-10"></div>
-      )}
+      )} */}
       <div
-        className="class-teste w-full h-[100vh] z-0 absolute md:top-[110vh] top-[57vh]"
+        // className="class-teste w-full h-[100vh] z-0 absolute md:top-[110vh] top-[57vh]"
+        // className="class-teste w-full h-[100vh] z-0 absolute md:top-[-56vh] top-[-20vh]"
         ref={mountRef}
+        className={`class-teste w-full h-[99vh] z-0 absolute md:top-[-59vh] top-[-20vh] ${
+          control3dactive ? "block" : "hidden"
+        }`}
       />
     </>
   );

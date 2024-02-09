@@ -247,7 +247,7 @@ const PosBanner = () => {
 
       <div
         id="secao"
-        className="relative z-[107]  w-full max-w-[90%] flex flex-row justify-between m-auto max-md:flex-col-reverse"
+        className="relative z-[0]  w-full max-w-[90%] flex flex-row justify-between m-auto max-md:flex-col-reverse"
         ref={containerAnimation}
       >
         <div className="w-[20%]" ref={elementRef}>
@@ -279,10 +279,10 @@ const PosBanner = () => {
           />
         </div>
       </div>
-      <div className="relative z-[104] w-full max-w-[90%] flex justify-between container m-auto mt-10 max-md:flex-col max-md:max-w-[100%]">
-        <div className="w-[70%] max-md:w-full cursor-pointer ">
+      <div className="relative z-[99992] w-full max-w-[90%] flex justify-between container m-auto mt-10 max-md:flex-col max-md:max-w-[100%]">
+        <div className="w-[70%] max-md:w-full cursor-pointer z-[99991]">
           <div
-            className="boxPosBannerInterativo absolute z-[400]  flex justify-center align-items-center"
+            className="boxPosBannerInterativo absolute z-[99991]  flex justify-center align-items-center"
             onClick={() => setControl3dactive(!control3dactive)}
           >
             {!control3dactive ? (
@@ -339,21 +339,24 @@ const PosBanner = () => {
           ></iframe>
         </div> */}
       </div>
-      <div className="imgMobile h-[50vh] z-0 flex justify-center align-items-center">
+      <div className="imgMobile w-full grid h-[50vh] relative z-[9999] justify-center align-items-center">
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
-          <div className="imgRetroescavadeira w-full align-self-center">
+          // {!control3dactive && (
+          <div className="imgRetroescavadeira w-full self-center justify-self-center	">
             <Image
               src="images/retroescavadeira_small.webp"
               alt="Icon"
-              className=""
+              className="w-[98%]"
               width={1250}
               height={671}
               priority
             />
           </div>
         )}
+        {/* <ThreeScene control3dactive={control3dactive} /> */}
+        {/* )} */}
       </div>
       {/* <div
         className="relative z-[102] imgPosBannerOrnamento opacity-0 flex justify-end max-md:hidden"
@@ -368,7 +371,7 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="barDetalhes relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6">
+      <div className="barDetalhes relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[0]">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
             <div className="imgCheck1 bg-white w-[60px] h-[60px] rounded-full relative">
@@ -381,7 +384,10 @@ const PosBanner = () => {
                 priority
               />
             </div>
-            <p className="txtCheck1 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior altura de <br/>descarga no mercado</p>
+            <p className="txtCheck1 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">
+              Maior altura de <br />
+              descarga no mercado
+            </p>
           </div>
           <div className="flex items-center max-md:mb-6">
             <div className="imgCheck2 bg-white w-[60px] h-[60px] rounded-full relative">
@@ -394,7 +400,10 @@ const PosBanner = () => {
                 priority
               />
             </div>
-            <p className="txtCheck2 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior força de escavação <br/>da caçamba frontal e traseira</p>
+            <p className="txtCheck2 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">
+              Maior força de escavação <br />
+              da caçamba frontal e traseira
+            </p>
           </div>
           <div className="flex items-center">
             <div className="imgCheck3 bg-white w-[60px] h-[60px] rounded-full relative">
@@ -407,7 +416,10 @@ const PosBanner = () => {
                 priority
               />
             </div>
-            <p className="txtCheck3 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">Maior vazão <br/>hidráulica</p>
+            <p className="txtCheck3 font-abeezee text-black text-2xl leading-6 ml-5 max-md:text-xl max-md:leading-5">
+              Maior vazão <br />
+              hidráulica
+            </p>
           </div>
         </div>
       </div>
