@@ -348,7 +348,7 @@ const PosBanner = () => {
             <Image
               src="images/retroescavadeira_small.webp"
               alt="Icon"
-              className="w-[98%]"
+              className="w-[95%] m-auto"
               width={1250}
               height={671}
               priority
@@ -371,7 +371,7 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="barDetalhes relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[0]">
+      <div className="barDetalhes relative min-[1900px]:mt-[200px] mt-[310px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999] max-md:mt-[200px]">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
             <div className="imgCheck1 bg-white w-[60px] h-[60px] rounded-full relative">
