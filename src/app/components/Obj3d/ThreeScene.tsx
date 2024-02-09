@@ -6,6 +6,7 @@ import {
   createCamera,
   createRenderer,
   createScene,
+  drawLine,
   loadEnvironment,
   loadModel,
 } from "./setup";
@@ -26,6 +27,10 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
   useEffect(() => {
     const sceneStart = createScene();
     const cameraStart = createCamera();
+    // const line = drawLine();
+
+    // sceneStart.add(line);
+
     loadEnvironment(sceneStart).then(() => {
       loadModel(sceneStart);
     });
@@ -51,6 +56,15 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
     setScene(sceneStart);
     setCamera(cameraStart);
 
+    window.addEventListener( 'resize', () => {
+      cameraStart.aspect = window.innerWidth / window.innerHeight;
+      cameraStart.updateProjectionMatrix();
+
+    renderStart.setSize( window.innerWidth, window.innerHeight );
+  }, false );
+
+
+
     return () => renderStart.dispose();
   }, []);
   useEffect(() => {
@@ -72,7 +86,7 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
         <div className="class-teste w-full h-[100vh] absolute md:top-[80vh] top-[60vh] z-10"></div>
       )}
       <div
-        className="class-teste w-full h-[100vh] z-0 absolute md:top-[110vh] top-[57vh]"
+        className="class-teste"
         ref={mountRef}
       />
     </>

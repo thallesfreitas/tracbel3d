@@ -248,7 +248,7 @@ const PosBanner = () => {
           ></iframe>
         </div> */}
       </div>
-      <div className="imgMobile h-[50vh] z-0 flex justify-center align-items-center">
+      <div className="imgMobile relative">
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
@@ -262,6 +262,33 @@ const PosBanner = () => {
               priority
             />
           </div>
+          
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] bg-black rounded p-4 font-bold"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Cabine com acesso amplo<br />
+            e 02 portas
+        </div>
+          
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] bg-black rounded p-4 font-bold"
+            style={{transform: 'translate3d(70vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Alavancas acionadas<br />
+            por piloto
+        </div>
+          
         )}
       </div>
       {/* <div
@@ -277,7 +304,7 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="relative mt-[200px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6">
+      <div className="relative mt-[200px] hidden justify-center bg-[#FFC000] py-6 max-md:mb-6">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
             <div className="bg-white w-[60px] h-[60px] rounded-full relative">
