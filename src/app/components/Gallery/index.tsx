@@ -111,7 +111,7 @@ const Gallery = () => {
         </div>
         <div className="textGallery1 w-[50%] opacity-0w-[50%] max-md:w-[100%] relative">
           <p className="text-[45px] font-abeezee leading-[50px] text-black text-center max-md:text-[22px]">
-            Por dentro da cabine?
+            Por dentro da cabine
           </p>
           <Image
             src="images/arrows.svg"

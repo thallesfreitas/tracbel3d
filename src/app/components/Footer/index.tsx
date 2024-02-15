@@ -22,7 +22,7 @@ const Footer = () => {
     {
       img: "images/footer/icon2.svg",
       title: "+30 filiais",
-      subtitle: "espalhados pelo Brasil",
+      subtitle: "espalhadas pelo Brasil",
     },
     {
       img: "images/footer/icon4.svg",
