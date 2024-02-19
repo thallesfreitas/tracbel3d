@@ -7,21 +7,6 @@ export const hdrTextureURL = "./model/HDR_250.hdr";
 export const DRACO_URL =
   "https://www.gstatic.com/draco/versioned/decoders/1.5.6/";
 
-export const drawLine = () => {
-  const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
-
-  const points = [];
-  // points.push( new THREE.Vector3( - 10, 0, 0 ) );
-  points.push( new THREE.Vector3( 0, 10, 0 ) );
-  points.push( new THREE.Vector3( 0, 0, 0 ) );
-
-  const geometry = new THREE.BufferGeometry().setFromPoints( points );
-
-  const line = new THREE.Line( geometry, material );
-
-  return line;
-};
-
 export const createScene = () => {
   const scene = new THREE.Scene();
   // scene.background = new THREE.Color(0xffffff);
@@ -33,8 +18,7 @@ export const createCamera = () => {
   const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
   const aspectRatio = window.innerWidth / height3d;
   const camera = new THREE.PerspectiveCamera(60, aspectRatio, 1, 1000);
-  // camera.aspect = aspectRatio;
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = aspectRatio;
   camera.updateProjectionMatrix();
   camera.position.set(-10, 5, 180);
   return camera;
@@ -183,7 +167,7 @@ export const animate = (
   let startTime = null;
   console.log("control3dactive");
   console.log(control3dactive);
-  const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+  const material = new THREE.LineBasicMaterial({ color: 0xe6ce58 });
 
   // Linha 1
   const points = [];
@@ -192,7 +176,7 @@ export const animate = (
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
   const line = new THREE.Line(geometry, material);
-  scene.add(line);
+  // scene.add(line);
 
   // Linha 2
   const points2 = [];
@@ -212,6 +196,8 @@ export const animate = (
   var dotMaterial = new THREE.PointsMaterial( { color: 0x0000ff, size: 10, sizeAttenuation: false } );
   var dot = new THREE.Points( dotGeometry, dotMaterial );
   scene.add( dot );
+
+  drawLine(renderer, scene, camera, new THREE.Vector3(0, 3, 0), new THREE.Vector3(-0.5, 0.5, -1));
 
   const renderLoop = (time: number) => {
     requestAnimationFrame(renderLoop);
@@ -247,35 +233,58 @@ export const animate = (
     positions2[2] = vector.z; 
     
     line2.geometry.attributes.position.needsUpdate = true; // required after the first render
-    
-
-    // if (gltfScene) {
-    //   if (control3dactive) {
-    //     gltfScene.rotation.y += 0.01;
-    //   }
-
-    //   const objectPosition = new THREE.Vector3();
-
-    //   gltfScene.getWorldPosition(objectPosition);
-
-    //   // Atualiza o segundo ponto da linha
-    //   line.geometry.attributes.position.array[0] = objectPosition.x;
-    //   line.geometry.attributes.position.array[1] = objectPosition.y;
-    //   line.geometry.attributes.position.array[2] = objectPosition.z;
-    //   line.geometry.attributes.position.needsUpdate = true;
-
-    //   // gltfScene.getWorldPosition(objectPosition);
-    //   const verticeGlobal = objectPosition.applyMatrix4(gltfScene.matrixWorld);
-
-    //   // Atualiza a posição final da linha
-    //   line.geometry.attributes.position.array[3] = objectPosition.x;
-    //   line.geometry.attributes.position.array[4] = objectPosition.y;
-    //   line.geometry.attributes.position.array[5] = objectPosition.z;
-    //   line.geometry.attributes.position.needsUpdate = true;
-    // }
 
     renderer.render(scene, camera);
   };
   requestAnimationFrame(renderLoop);
   renderLoop(0);
+};
+
+export const drawLine = (
+  renderer: THREE.WebGLRenderer,
+  scene: THREE.Scene,
+  camera: THREE.PerspectiveCamera, 
+  initialPosition: THREE.Vector3, 
+  finalPosition: THREE.Vector3
+) => {
+  const color        = 0xe6ce58; // Cor da linha e ponto
+  const materialLine = new THREE.LineBasicMaterial({ color: color }); // Material da linha
+  const materialDot  = new THREE.PointsMaterial({ color: color, size: 10, sizeAttenuation: false }); // Material do ponto
+
+  // Posição inicial e final da linha
+  const positions = [
+    initialPosition,
+    finalPosition,
+  ];
+  
+  const geometryLine = new THREE.BufferGeometry().setFromPoints(positions); // Geometria da linha
+  const geometryDot  = new THREE.BufferGeometry().setFromPoints([initialPosition]); // Geometria do ponto
+
+  const line = new THREE.Line(geometryLine, materialLine); // Cria linha
+  const dot  = new THREE.Points(geometryDot, materialDot); // Cria ponto
+  
+  scene.add(line); // Adiciona linha a cena
+  scene.add(dot); // Adiciona ponto a cena
+
+  // Loop para atualizar o ponto fixo da linha
+  const renderLoop = () => {
+    requestAnimationFrame(renderLoop);
+
+    const vector    = new THREE.Vector3();
+    const positions = line.geometry.attributes.position.array; // Obtém posições da linha
+
+    vector.set(finalPosition.x, finalPosition.y, finalPosition.z).unproject(camera); // Converte coordenadas da tela para coordenadas 3D
+    
+    // Atualiza posição final da linha
+    positions[3] = vector.x; 
+    positions[4] = vector.y; 
+    positions[5] = vector.z; 
+    
+    line.geometry.attributes.position.needsUpdate = true; // Necessita ser atualizada
+
+    renderer.render(scene, camera);
+  };
+
+  requestAnimationFrame(renderLoop);
+  renderLoop();
 };
