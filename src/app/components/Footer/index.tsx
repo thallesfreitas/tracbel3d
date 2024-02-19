@@ -5,12 +5,13 @@ import Image from "next/image";
 import { useRef } from "react";
 
 import { useGSAP } from "@gsap/react";
-import gsap, { Power3 } from "gsap";
+import gsap, { Back, Power3 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Footer = () => {
-  
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(ScrollTrigger);
 
   const infos = [
     {
@@ -21,7 +22,7 @@ const Footer = () => {
     {
       img: "images/footer/icon2.svg",
       title: "+30 filiais",
-      subtitle: "espalhados pelo Brasil",
+      subtitle: "espalhadas pelo Brasil",
     },
     {
       img: "images/footer/icon4.svg",
@@ -32,7 +33,7 @@ const Footer = () => {
       img: "images/footer/icon5.svg",
       title: "+12.000 máquinas",
       subtitle: "vendidas nos últimos 10 anos",
-    }
+    },
   ];
 
   const infos2 = [
@@ -50,43 +51,67 @@ const Footer = () => {
       img: "images/footer/icon8.svg",
       title: "Selo de qualidade",
       subtitle: "Tracbel",
-    }
-  ]
+    },
+  ];
 
-
+ 
   useGSAP(
     () => {
       //seta elementos
-      // setTimeout(() => {
-      //   gsap.set(".imgLogoTracbel", { y: 200, opacity: 0 });
-      //   gsap.set(".allIcons", { opacity: 0 });
-      // }, 100);
+      setTimeout(() => {
+        gsap.set(".logoTracbel", { y: 200, opacity: 0 });
+        gsap.set(".allIcons_1", { y: 200, opacity: 0 });
+        gsap.set(".allIcons_2", { y: 200, opacity: 0 });
+      }, 100);
 
-    //   setTimeout(() => {
-    //     gsap.to(".allIcons", {
-    //       opacity: 1,
-    //       duration: 1,
-    //       ease: Power3.easeOut,
-    //       scrollTrigger: {
-    //         trigger: ".allIcons",
-    //         // start: "top top",
-    //         // end: "top 10px",
-    //         scrub: true,
-    //         markers: true,
-    //       },
-    //     });
-    // }, 200)
-  },
-  { scope: containerAnimation }
+      setTimeout(() => {
+        gsap.to(".logoTracbel", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".logoTracbel",
+            start: "top 800px",
+            end: "top 400px",
+            scrub: true
+          },
+        });
+        gsap.to(".allIcons_1", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".allIcons_1",
+            start: "top 800px",
+            end: "top 400px",
+            scrub: true
+          },
+        });
+        gsap.to(".allIcons_2", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          scrollTrigger: {
+            trigger: ".allIcons_1",
+            start: "top 800px",
+            end: "top 400px",
+            scrub: true
+          },
+        });
+      }, 200);
+    },
+    { scope: containerAnimation }
   );
-
 
   return (
     <>
-      <div className="allContact w-full bg-white py-5 z-20">
-        <div className="container flex flex-row items-center justify-center m-auto w-full border-t-2 border-t-[#989898] py-10 max-md:max-w-[90%]">
+      <div className="allBoxFooter w-full bg-white py-5 z-20">
+        <div className="logoTracbel container flex flex-row items-center justify-center m-auto w-full border-t-2 border-t-[#989898] py-10 max-md:max-w-[90%]">
           <Image
-            src="/images/logo-tracbel.svg"
+            src="images/logo-tracbel.svg"
             alt="Logo"
             className=""
             width={164}
@@ -94,9 +119,12 @@ const Footer = () => {
             loading="lazy"
           />
         </div>
-        <div className="allIcons w-full max-w-[70%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around max-md:max-w-[95%]">
+        <div className="allIcons_1 w-full max-w-[70%] m-auto flex justify-between items-center max-md:flex-wrap max-md:justify-around max-md:max-w-[95%]">
           {infos.map((info, index) => (
-            <div key={index} className="flex flex-col items-center max-md:w-[50%] max-md:text-center max-md:mb-5">
+            <div
+              key={index}
+              className="flex flex-col items-center max-md:w-[50%] max-md:text-center max-md:mb-5"
+            >
               <div className="h-[90px] flex items-center">
                 <Image
                   src={info.img}
@@ -116,9 +144,12 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="allIcons w-full max-w-[60%] m-auto mt-10 flex justify-between max-md:flex-wrap max-md:justify-around max-md:max-w-[95%] max-md:mt-0">
+        <div className="allIcons_2 w-full max-w-[60%] m-auto mt-10 flex justify-between max-md:flex-wrap max-md:justify-around max-md:max-w-[95%] max-md:mt-0">
           {infos2.map((info, index) => (
-            <div key={index} className="flex flex-col items-center max-md:w-[50%] max-md:text-center max-md:mb-5">
+            <div
+              key={index}
+              className="flex flex-col items-center max-md:w-[50%] max-md:text-center max-md:mb-5"
+            >
               <div className="h-[90px] flex items-center">
                 <Image
                   src={info.img}

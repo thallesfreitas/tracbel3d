@@ -24,7 +24,7 @@ export const drawLine = () => {
 
 export const createScene = () => {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xffffff);
+  // scene.background = new THREE.Color(0xffffff);
   return scene;
 };
 
@@ -48,13 +48,11 @@ export const createCamera = () => {
 };
 
 export const createRenderer = (mount: any) => {
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  // const viewport = window.innerWidth;
-  // const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
-  // renderer.setSize(window.innerWidth, height3d);
-
-  renderer.setSize( window.innerWidth, window.innerHeight );
-
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const viewport = window.innerWidth;
+  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
+  renderer.setSize(window.innerWidth, height3d);
+  renderer.setClearColor(0xffffff, 0);
   mount.innerHTML = "";
   mount.appendChild(renderer.domElement);
   return renderer;
