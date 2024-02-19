@@ -6,7 +6,6 @@ import {
   createCamera,
   createRenderer,
   createScene,
-  drawLine,
   loadEnvironment,
   loadModel,
 } from "./setup";
@@ -37,7 +36,7 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
 
     const renderStart = createRenderer(mountRef.current);
 
-    animate(renderStart, sceneStart, cameraStart, control3dactive);
+    animate(renderStart, sceneStart, cameraStart);
     const orbitControls = new OrbitControls(
       cameraStart,
       renderStart.domElement

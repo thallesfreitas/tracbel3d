@@ -158,86 +158,18 @@ const processModel = (model: any) => {
 export const animate = (
   renderer: THREE.WebGLRenderer,
   scene: THREE.Scene,
-  camera: THREE.PerspectiveCamera,
-  control3dactive = false
+  camera: THREE.PerspectiveCamera
 ) => {
-  let startPositionX = 3000;
-  const endPositionX = 0;
-  const duration = 7000;
-  let startTime = null;
-  console.log("control3dactive");
-  console.log(control3dactive);
-  const material = new THREE.LineBasicMaterial({ color: 0xe6ce58 });
-
-  // Linha 1
-  const points = [];
-  points.push( new THREE.Vector3( 0, 0, 0 ) );
-  points.push( new THREE.Vector3( 0, 3, 0 ) );
-  const geometry = new THREE.BufferGeometry().setFromPoints(points);
-
-  const line = new THREE.Line(geometry, material);
-  // scene.add(line);
-
-  // Linha 2
-  const points2 = [];
-  points2.push( new THREE.Vector3( 0, 0, 0 ) );
-  points2.push( new THREE.Vector3( 1.75, 3, 0 ) );
-  const geometry2 = new THREE.BufferGeometry().setFromPoints(points2);
-
-  const line2 = new THREE.Line(geometry2, material);
-  scene.add(line2);
-
-  var dotGeometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3( 0, 3, 0 )]);
-  var dotMaterial = new THREE.PointsMaterial( { color: 0x0000ff, size: 10, sizeAttenuation: false } );
-  var dot = new THREE.Points( dotGeometry, dotMaterial );
-  scene.add( dot );
-
-  var dotGeometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3( 1.75, 3, 0 )]);
-  var dotMaterial = new THREE.PointsMaterial( { color: 0x0000ff, size: 10, sizeAttenuation: false } );
-  var dot = new THREE.Points( dotGeometry, dotMaterial );
-  scene.add( dot );
-
-  drawLine(renderer, scene, camera, new THREE.Vector3(0, 3, 0), new THREE.Vector3(-0.5, 0.5, -1));
-
-  const renderLoop = (time: number) => {
-    requestAnimationFrame(renderLoop);
-
-    // var new_position = new THREE.Vector3( 0, 10, -1 ).unproject( camera );
-    // var positions = line.geometry.attributes.position.array;
-    // positions[0] = new_position.x; 
-    // positions[1] = new_position.y; 
-    // positions[2] = new_position.z; 
-    // // geometry.verticesNeedUpdate = true;
-
-    // // geometry.setFromPoints(camera.position);
-    // line.geometry.attributes.position.needsUpdate = true; // required after the first render
-
-    var vector = new THREE.Vector3();
-    // Top left corner
-    vector.set( -0.5, 0.5, -1 ).unproject( camera );
-
-    var positions = line.geometry.attributes.position.array;
-    positions[0] = vector.x; 
-    positions[1] = vector.y; 
-    positions[2] = vector.z; 
-    
-    line.geometry.attributes.position.needsUpdate = true; // required after the first render
-
-    var vector = new THREE.Vector3();
-    // Top left corner
-    vector.set( 0.5, 0.5, -1 ).unproject( camera );
-
-    var positions2 = line2.geometry.attributes.position.array;
-    positions2[0] = vector.x; 
-    positions2[1] = vector.y; 
-    positions2[2] = vector.z; 
-    
-    line2.geometry.attributes.position.needsUpdate = true; // required after the first render
-
-    renderer.render(scene, camera);
-  };
-  requestAnimationFrame(renderLoop);
-  renderLoop(0);
+  drawLine(renderer, scene, camera, new THREE.Vector3(0, 2.95, 0), new THREE.Vector3(0.1, 0.35, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(2.8, 2.2, 0), new THREE.Vector3(0.65, 0.27, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(2.4, 1.5, 0), new THREE.Vector3(0.65, 0.12, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(1.3, 0.5, 1.68), new THREE.Vector3(0.6, -0.13, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(1.4, 0.1, 1.9), new THREE.Vector3(0.6, -0.23, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-0.05, 0.7, 1), new THREE.Vector3(0.05, -0.23, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 0.5, 1.15), new THREE.Vector3(-0.3, -0.23, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-3.4, 0.8, 0), new THREE.Vector3(-0.65, 0.05, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 1.7, 0), new THREE.Vector3(-0.43, 0.25, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-1.6, 1.86, 0), new THREE.Vector3(-0.25, 0.25, -1));
 };
 
 export const drawLine = (
