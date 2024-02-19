@@ -354,34 +354,132 @@ const PosBanner = () => {
               priority
             />
           </div>
-          
         )}
 
         {!control3dactive ? (
           ''
         ) : (
           <div
-            className="absolute z-[400] bg-black rounded p-4 font-bold"
+            id="teste"
+            className="absolute z-[400] text-black text-center pointer-events-none"
             style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
           >
-            Cabine com acesso amplo<br />
-            e 02 portas
+            Cabine climatizada com ampla<br />
+            área envidraçada e certificação<br />
+            ROPS e FOPS
         </div>
-          
         )}
 
         {!control3dactive ? (
           ''
         ) : (
           <div
-            className="absolute z-[400] bg-black rounded p-4 font-bold"
-            style={{transform: 'translate3d(70vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
           >
-            Alavancas acionadas<br />
-            por piloto
+            Função<br />
+            Hidráulica para<br />
+            Rompedor
         </div>
-          
         )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Maior<br />
+            profundidade<br />
+            de escvação
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Proteções do<br />
+            cilindros dos<br />
+            estabilizadores
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Sapatas reversíveis
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Versões 4x2 e 4x4
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Transmissão e Eixos<br />
+            Carraro Reforçados
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Caçamba frontal<br />
+            de 1,2³ com<br />
+            chapas desgaste
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Baixo consumo<br />
+            de combustível
+        </div>
+        )}
+
+        {!control3dactive ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none"
+            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+          >
+            Motores Perkins<br />
+            ou Kirloskar
+        </div>
+        )}
+        
         {/* <ThreeScene control3dactive={control3dactive} /> */}
         {/* )} */}
       </div>
