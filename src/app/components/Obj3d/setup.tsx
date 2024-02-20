@@ -18,27 +18,26 @@ export const createCamera = () => {
   const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
   const aspectRatio = window.innerWidth / height3d;
   const camera = new THREE.PerspectiveCamera(60, aspectRatio, 1, 1000);
-  camera.aspect = aspectRatio;
+  // camera.aspect = aspectRatio;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   camera.position.set(-10, 5, 180);
+
   return camera;
-  // } else {
-  //   const camera = new THREE.PerspectiveCamera(85, aspectRatio, 1, 2000);
-  //   camera.aspect = aspectRatio;
-  //   camera.updateProjectionMatrix();
-  //   camera.position.set(-10, 5, 120);
-  //   return camera;
-  // }
 };
 
 export const createRenderer = (mount: any) => {
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  const viewport = window.innerWidth;
-  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
-  renderer.setSize(window.innerWidth, height3d);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  // const viewport = window.innerWidth;
+  // const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
+  // renderer.setSize(window.innerWidth, height3d);
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
   renderer.setClearColor(0xffffff, 0);
+
   mount.innerHTML = "";
   mount.appendChild(renderer.domElement);
+
   return renderer;
 };
 
@@ -160,16 +159,16 @@ export const animate = (
   scene: THREE.Scene,
   camera: THREE.PerspectiveCamera
 ) => {
-  drawLine(renderer, scene, camera, new THREE.Vector3(0, 2.95, 0), new THREE.Vector3(0.1, 0.35, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(2.8, 2.2, 0), new THREE.Vector3(0.65, 0.27, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(2.4, 1.5, 0), new THREE.Vector3(0.65, 0.12, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(1.3, 0.5, 1.68), new THREE.Vector3(0.6, -0.13, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(1.4, 0.1, 1.9), new THREE.Vector3(0.6, -0.23, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-0.05, 0.7, 1), new THREE.Vector3(0.05, -0.23, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 0.5, 1.15), new THREE.Vector3(-0.3, -0.23, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-3.4, 0.8, 0), new THREE.Vector3(-0.65, 0.05, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 1.7, 0), new THREE.Vector3(-0.43, 0.25, -1));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-1.6, 1.86, 0), new THREE.Vector3(-0.25, 0.25, -1));
+  drawLine(renderer, scene, camera, new THREE.Vector3(0, 2.95, 0), new THREE.Vector3(0.1, 0.8, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(2.8, 2.2, 0), new THREE.Vector3(0.67, 0.6, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(2.4, 1.5, 0), new THREE.Vector3(0.7, 0.28, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(1.3, 0.5, 1.68), new THREE.Vector3(0.7, -0.35, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(1.4, 0.1, 1.9), new THREE.Vector3(0.7, -0.62, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-0.05, 0.7, 1), new THREE.Vector3(0.05, -0.55, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 0.5, 1.15), new THREE.Vector3(-0.35, -0.6, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-3.4, 0.8, 0), new THREE.Vector3(-0.65, 0.05, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 1.7, 0), new THREE.Vector3(-0.55, 0.5, 0));
+  drawLine(renderer, scene, camera, new THREE.Vector3(-1.6, 1.86, 0), new THREE.Vector3(-0.35, 0.65, 0));
 };
 
 export const drawLine = (

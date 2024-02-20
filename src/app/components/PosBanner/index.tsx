@@ -339,7 +339,7 @@ const PosBanner = () => {
           ></iframe>
         </div> */}
       </div>
-      <div className="imgMobile w-full grid h-[50vh] relative z-[9999] justify-center align-items-center">
+      <div className="imgMobile w-full grid relative z-[9999] justify-center align-items-center">
         {control3dactive ? (
           <ThreeScene control3dactive={control3dactive} />
         ) : (
@@ -360,9 +360,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            id="teste"
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(48vw, 8%, 0px)', top: 0, left: 0}}
           >
             Cabine climatizada com ampla<br />
             área envidraçada e certificação<br />
@@ -374,8 +373,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(81vw, 140%, 0px)', top: 0, left: 0}}
           >
             Função<br />
             Hidráulica para<br />
@@ -387,12 +386,12 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(86vw, 395%, 0px)', top: 0, left: 0}}
           >
             Maior<br />
             profundidade<br />
-            de escvação
+            de escavação
         </div>
         )}
 
@@ -400,8 +399,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(86vw, 817%, 0px)', top: 0, left: 0}}
           >
             Proteções do<br />
             cilindros dos<br />
@@ -413,8 +412,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(81vw, 3152%, 0px)', top: 0, left: 0}}
           >
             Sapatas reversíveis
         </div>
@@ -424,8 +423,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(47vw, 3008%, 0px)', top: 0, left: 0}}
           >
             Versões 4x2 e 4x4
         </div>
@@ -435,8 +434,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(27vw, 1550%, 0px)', top: 0, left: 0}}
           >
             Transmissão e Eixos<br />
             Carraro Reforçados
@@ -447,8 +446,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(8vw, 537%, 0px)', top: 0, left: 0}}
           >
             Caçamba frontal<br />
             de 1,2³ com<br />
@@ -460,8 +459,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(14vw, 408%, 0px)', top: 0, left: 0}}
           >
             Baixo consumo<br />
             de combustível
@@ -472,8 +471,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none"
-            style={{transform: 'translate3d(20vw, 15vh, 0px)', top: 0, left: 0}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{transform: 'translate3d(24vw, 253%, 0px)', top: 0, left: 0}}
           >
             Motores Perkins<br />
             ou Kirloskar
