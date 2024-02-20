@@ -14,13 +14,8 @@ export const createScene = () => {
 };
 
 export const createCamera = () => {
-  const viewport = window.innerWidth;
-  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
-  const aspectRatio = window.innerWidth / height3d;
-  const camera = new THREE.PerspectiveCamera(60, aspectRatio, 1, 1000);
-  // camera.aspect = aspectRatio;
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+  const camera = new THREE.PerspectiveCamera(60, 16 / 9, 1, 1000);
+  
   camera.position.set(-10, 5, 180);
 
   return camera;
@@ -28,11 +23,8 @@ export const createCamera = () => {
 
 export const createRenderer = (mount: any) => {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  // const viewport = window.innerWidth;
-  // const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
-  // renderer.setSize(window.innerWidth, height3d);
 
-  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setSize(window.innerWidth, (768 / 1366) * window.innerWidth);
   renderer.setClearColor(0xffffff, 0);
 
   mount.innerHTML = "";

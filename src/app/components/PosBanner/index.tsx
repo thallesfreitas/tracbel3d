@@ -360,8 +360,8 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{top: '1%', left: '47vw'}}
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
+            style={{top: 0, left: '47vw'}}
           >
             Cabine climatizada com ampla<br />
             área envidraçada e certificação<br />
@@ -386,7 +386,7 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
             style={{top: '31%', left: '86vw'}}
           >
             Maior<br />
@@ -434,7 +434,7 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
             style={{top: '81%', left: '27vw'}}
           >
             Transmissão e Eixos<br />
@@ -471,7 +471,7 @@ const PosBanner = () => {
           ''
         ) : (
           <div
-            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
             style={{top: '11%', left: '28vw'}}
           >
             Motores Perkins<br />
@@ -495,7 +495,7 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="barDetalhes relative mt-[150px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999]">
+      <div className="barDetalhes relative flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999]">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
             <div className="imgCheck1 bg-white w-[60px] h-[60px] rounded-full relative">

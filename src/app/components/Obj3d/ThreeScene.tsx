@@ -41,8 +41,8 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
       cameraStart,
       renderStart.domElement
     );
-    orbitControls.minDistance = 5.5;
-    orbitControls.maxDistance = 5.5;
+    orbitControls.minDistance = 7.7;
+    orbitControls.maxDistance = 7.7;
     orbitControls.enablePan = false;
     orbitControls.enableZoom = false
     orbitControls.maxPolarAngle = Math.PI / 2;
@@ -57,13 +57,8 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
     setCamera(cameraStart);
 
     window.addEventListener( 'resize', () => {
-      cameraStart.aspect = window.innerWidth / window.innerHeight;
-      cameraStart.updateProjectionMatrix();
-
-    renderStart.setSize( window.innerWidth, window.innerHeight );
-  }, false );
-
-
+      renderStart.setSize(window.innerWidth, (768 / 1366) * window.innerWidth);
+    }, false );
 
     return () => renderStart.dispose();
   }, []);
@@ -74,8 +69,7 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
       animate(
         renderer as THREE.WebGLRenderer,
         scene as THREE.Scene,
-        camera as THREE.PerspectiveCamera,
-        control3dactive
+        camera as THREE.PerspectiveCamera
       );
     }
   }, [control3dactive, controls]);
