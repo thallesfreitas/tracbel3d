@@ -361,7 +361,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(48vw, 8%, 0px)', top: 0, left: 0}}
+            style={{top: '1%', left: '47vw'}}
           >
             Cabine climatizada com ampla<br />
             área envidraçada e certificação<br />
@@ -374,7 +374,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(81vw, 140%, 0px)', top: 0, left: 0}}
+            style={{top: '11%', left: '81vw'}}
           >
             Função<br />
             Hidráulica para<br />
@@ -387,7 +387,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(86vw, 395%, 0px)', top: 0, left: 0}}
+            style={{top: '31%', left: '86vw'}}
           >
             Maior<br />
             profundidade<br />
@@ -400,7 +400,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(86vw, 817%, 0px)', top: 0, left: 0}}
+            style={{top: '64%', left: '86vw'}}
           >
             Proteções do<br />
             cilindros dos<br />
@@ -413,7 +413,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(81vw, 3152%, 0px)', top: 0, left: 0}}
+            style={{top: '82%', left: '82vw'}}
           >
             Sapatas reversíveis
         </div>
@@ -424,7 +424,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(47vw, 3008%, 0px)', top: 0, left: 0}}
+            style={{top: '79%', left: '47vw'}}
           >
             Versões 4x2 e 4x4
         </div>
@@ -435,7 +435,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(27vw, 1550%, 0px)', top: 0, left: 0}}
+            style={{top: '81%', left: '27vw'}}
           >
             Transmissão e Eixos<br />
             Carraro Reforçados
@@ -447,7 +447,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(8vw, 537%, 0px)', top: 0, left: 0}}
+            style={{top: '42%', left: '8vw'}}
           >
             Caçamba frontal<br />
             de 1,2³ com<br />
@@ -460,7 +460,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(14vw, 408%, 0px)', top: 0, left: 0}}
+            style={{top: '21%', left: '14vw'}}
           >
             Baixo consumo<br />
             de combustível
@@ -472,7 +472,7 @@ const PosBanner = () => {
         ) : (
           <div
             className="absolute z-[400] text-black text-center pointer-events-none text-sm"
-            style={{transform: 'translate3d(24vw, 253%, 0px)', top: 0, left: 0}}
+            style={{top: '11%', left: '28vw'}}
           >
             Motores Perkins<br />
             ou Kirloskar
@@ -495,7 +495,7 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="barDetalhes relative min-[1900px]:mt-[200px] mt-[310px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999] max-md:mt-[200px]">
+      <div className="barDetalhes relative mt-[150px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999]">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
             <div className="imgCheck1 bg-white w-[60px] h-[60px] rounded-full relative">
