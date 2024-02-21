@@ -12,8 +12,9 @@ import {
 
 interface ThreeSceneProps {
   control3dactive: boolean;
+  setLoading: any
 }
-export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
+export default function ThreeScene({ control3dactive, setLoading }: ThreeSceneProps) {
   const mountRef = useRef(null);
   const [controls, setControls] = useState<OrbitControls | null>(null);
   const [scene, setScene] = useState<THREE.Scene | null>(null);
@@ -26,17 +27,12 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
   useEffect(() => {
     const sceneStart = createScene();
     const cameraStart = createCamera();
-    // const line = drawLine();
-
-    // sceneStart.add(line);
-
-    loadEnvironment(sceneStart).then(() => {
-      loadModel(sceneStart);
-    });
-
     const renderStart = createRenderer(mountRef.current);
 
-    animate(renderStart, sceneStart, cameraStart);
+    loadEnvironment(sceneStart).then(() => {
+      loadModel(renderStart, sceneStart, cameraStart, setLoading);
+    });
+
     const orbitControls = new OrbitControls(
       cameraStart,
       renderStart.domElement
@@ -62,17 +58,17 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
 
     return () => renderStart.dispose();
   }, []);
-  useEffect(() => {
-    if (controls) {
-      controls.enabled = control3dactive;
-      controls.update();
-      animate(
-        renderer as THREE.WebGLRenderer,
-        scene as THREE.Scene,
-        camera as THREE.PerspectiveCamera
-      );
-    }
-  }, [control3dactive, controls]);
+  // useEffect(() => {
+  //   if (controls) {
+  //     controls.enabled = control3dactive;
+  //     controls.update();
+  //     animate(
+  //       renderer as THREE.WebGLRenderer,
+  //       scene as THREE.Scene,
+  //       camera as THREE.PerspectiveCamera
+  //     );
+  //   }
+  // }, [control3dactive, controls]);
 
   return (
     <>
@@ -83,8 +79,8 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
         // className="class-teste w-full h-[100vh] z-0 absolute md:top-[110vh] top-[57vh]"
         // className="class-teste w-full h-[100vh] z-0 absolute md:top-[-56vh] top-[-20vh]"
         ref={mountRef}
-        className={`class-teste w-full z-0 ${
-          control3dactive ? "block" : "hidden"
+        className={`class-teste w-full z-0 items-end lg:items-start ${
+          control3dactive ? "flex" : "hidden"
         }`}
       />
     </>

@@ -43,7 +43,14 @@ export const loadEnvironment = async (scene: THREE.Scene) => {
   });
 };
 
-export const loadModel = async (scene: THREE.Scene) => {
+export const loadModel = async (
+  renderer: THREE.WebGLRenderer,
+  scene: THREE.Scene,
+  camera: THREE.PerspectiveCamera,
+  setLoading: any
+) => {
+  setLoading(true);
+
   const loader = new GLTFLoader();
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath(DRACO_URL);
@@ -51,11 +58,14 @@ export const loadModel = async (scene: THREE.Scene) => {
 
   try {
     gltf = await loader.loadAsync(MODEL_URL);
+    
     gltfScene = gltf.scene;
-    // gltfScene.position.y = 10;
-    // gltfScene.position.x = 5000;
+    
     processModel(gltf.scene);
     scene.add(gltf.scene);
+
+    setLoading(false);
+    animate(renderer, scene, camera);
   } catch (error) {
     console.error(error);
   }
@@ -151,16 +161,27 @@ export const animate = (
   scene: THREE.Scene,
   camera: THREE.PerspectiveCamera
 ) => {
-  drawLine(renderer, scene, camera, new THREE.Vector3(0, 2.95, 0), new THREE.Vector3(0.1, 0.8, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(2.8, 2.2, 0), new THREE.Vector3(0.67, 0.6, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(2.4, 1.5, 0), new THREE.Vector3(0.7, 0.28, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(1.3, 0.5, 1.68), new THREE.Vector3(0.7, -0.35, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(1.4, 0.1, 1.9), new THREE.Vector3(0.7, -0.62, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-0.05, 0.7, 1), new THREE.Vector3(0.05, -0.55, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 0.5, 1.15), new THREE.Vector3(-0.35, -0.6, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-3.4, 0.8, 0), new THREE.Vector3(-0.65, 0.05, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 1.7, 0), new THREE.Vector3(-0.55, 0.5, 0));
-  drawLine(renderer, scene, camera, new THREE.Vector3(-1.6, 1.86, 0), new THREE.Vector3(-0.35, 0.65, 0));
+  if(!isMobile()) {
+    drawLine(renderer, scene, camera, new THREE.Vector3(0, 2.95, 0), new THREE.Vector3(0.1, 0.8, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(2.8, 2.2, 0), new THREE.Vector3(0.67, 0.6, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(2.4, 1.5, 0), new THREE.Vector3(0.7, 0.28, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(1.3, 0.5, 1.68), new THREE.Vector3(0.7, -0.35, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(1.4, 0.1, 1.9), new THREE.Vector3(0.7, -0.62, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-0.05, 0.7, 1), new THREE.Vector3(0.05, -0.55, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 0.5, 1.15), new THREE.Vector3(-0.35, -0.6, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-3.4, 0.8, 0), new THREE.Vector3(-0.65, 0.05, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 1.7, 0), new THREE.Vector3(-0.55, 0.5, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-1.6, 1.86, 0), new THREE.Vector3(-0.35, 0.65, 0));
+  }
+  else {
+    const renderLoop = () => {
+      requestAnimationFrame(renderLoop);
+  
+      renderer.render(scene, camera);
+    };
+  
+    renderLoop();
+  } 
 };
 
 export const drawLine = (
@@ -211,3 +232,5 @@ export const drawLine = (
   requestAnimationFrame(renderLoop);
   renderLoop();
 };
+
+export const isMobile  = () => window.matchMedia("(max-width: 1023px)").matches;

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import ThreeScene from "../../components/Obj3d/ThreeScene";
+import { isMobile } from "../Obj3d/setup";
 
 import { useGSAP } from "@gsap/react";
 import gsap, { Back, Power3 } from "gsap";
@@ -12,6 +13,8 @@ const PosBanner = () => {
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
   const [control3dactive, setControl3dactive] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(
@@ -340,8 +343,14 @@ const PosBanner = () => {
         </div> */}
       </div>
       <div className="imgMobile w-full grid relative z-[9999] justify-center align-items-center">
+      {!control3dactive || !loading ? (
+          ''
+      ) : (
+        <span className="loader"></span>
+      )}
+
         {control3dactive ? (
-          <ThreeScene control3dactive={control3dactive} />
+          <ThreeScene control3dactive={control3dactive} setLoading={setLoading} />
         ) : (
           // {!control3dactive && (
           <div className="imgRetroescavadeira w-full self-center justify-self-center	">
@@ -356,7 +365,7 @@ const PosBanner = () => {
           </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -369,7 +378,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -382,7 +391,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -395,7 +404,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -408,7 +417,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -419,7 +428,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -430,7 +439,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -442,7 +451,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -455,7 +464,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
@@ -467,7 +476,7 @@ const PosBanner = () => {
         </div>
         )}
 
-        {!control3dactive ? (
+        {loading || !control3dactive || isMobile() ? (
           ''
         ) : (
           <div
