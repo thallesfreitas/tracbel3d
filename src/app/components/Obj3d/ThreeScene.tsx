@@ -37,10 +37,9 @@ export default function ThreeScene({ control3dactive, setLoading }: ThreeScenePr
       cameraStart,
       renderStart.domElement
     );
-    orbitControls.minDistance = 7.7;
+    orbitControls.minDistance = 4;
     orbitControls.maxDistance = 7.7;
     orbitControls.enablePan = false;
-    orbitControls.enableZoom = false
     orbitControls.maxPolarAngle = Math.PI / 2;
     orbitControls.target.set(-0.8, 1.15, 0);
 
