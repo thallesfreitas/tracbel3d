@@ -14,31 +14,22 @@ export const createScene = () => {
 };
 
 export const createCamera = () => {
-  const viewport = window.innerWidth;
-  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
-  const aspectRatio = window.innerWidth / height3d;
-  const camera = new THREE.PerspectiveCamera(60, aspectRatio, 1, 1000);
-  camera.aspect = aspectRatio;
-  camera.updateProjectionMatrix();
+  const camera = new THREE.PerspectiveCamera(60, 16 / 9, 1, 1000);
+  
   camera.position.set(-10, 5, 180);
+
   return camera;
-  // } else {
-  //   const camera = new THREE.PerspectiveCamera(85, aspectRatio, 1, 2000);
-  //   camera.aspect = aspectRatio;
-  //   camera.updateProjectionMatrix();
-  //   camera.position.set(-10, 5, 120);
-  //   return camera;
-  // }
 };
 
 export const createRenderer = (mount: any) => {
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  const viewport = window.innerWidth;
-  const height3d = viewport > 768 ? window.innerHeight * 2 : window.innerHeight;
-  renderer.setSize(window.innerWidth, height3d);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+  renderer.setSize(window.innerWidth, (768 / 1366) * window.innerWidth);
   renderer.setClearColor(0xffffff, 0);
+
   mount.innerHTML = "";
   mount.appendChild(renderer.domElement);
+
   return renderer;
 };
 
@@ -52,7 +43,14 @@ export const loadEnvironment = async (scene: THREE.Scene) => {
   });
 };
 
-export const loadModel = async (scene: THREE.Scene) => {
+export const loadModel = async (
+  renderer: THREE.WebGLRenderer,
+  scene: THREE.Scene,
+  camera: THREE.PerspectiveCamera,
+  setLoading: any
+) => {
+  setLoading(true);
+
   const loader = new GLTFLoader();
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath(DRACO_URL);
@@ -60,11 +58,14 @@ export const loadModel = async (scene: THREE.Scene) => {
 
   try {
     gltf = await loader.loadAsync(MODEL_URL);
+    
     gltfScene = gltf.scene;
-    // gltfScene.position.y = 10;
-    // gltfScene.position.x = 5000;
+    
     processModel(gltf.scene);
     scene.add(gltf.scene);
+
+    setLoading(false);
+    animate(renderer, scene, camera);
   } catch (error) {
     console.error(error);
   }
@@ -158,55 +159,78 @@ const processModel = (model: any) => {
 export const animate = (
   renderer: THREE.WebGLRenderer,
   scene: THREE.Scene,
-  camera: THREE.PerspectiveCamera,
-  control3dactive = false
+  camera: THREE.PerspectiveCamera
 ) => {
-  // let startPositionX = 3000;
-  // const endPositionX = 0;
-  // const duration = 7000;
-  // let startTime = null;
-  // console.log("control3dactive");
-  // console.log(control3dactive);
-  // const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+  if(!isMobile()) {
+    drawLine(renderer, scene, camera, new THREE.Vector3(0, 2.95, 0), new THREE.Vector3(0.1, 0.8, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(2.8, 2.2, 0), new THREE.Vector3(0.67, 0.6, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(2.4, 1.5, 0), new THREE.Vector3(0.7, 0.28, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(1.3, 0.5, 1.68), new THREE.Vector3(0.7, -0.35, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(1.4, 0.1, 1.9), new THREE.Vector3(0.7, -0.62, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-0.05, 0.7, 1), new THREE.Vector3(0.05, -0.55, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 0.5, 1.15), new THREE.Vector3(-0.35, -0.6, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-3.4, 0.8, 0), new THREE.Vector3(-0.65, 0.05, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-2.1, 1.7, 0), new THREE.Vector3(-0.55, 0.5, 0));
+    drawLine(renderer, scene, camera, new THREE.Vector3(-1.6, 1.86, 0), new THREE.Vector3(-0.35, 0.65, 0));
+  }
+  else {
+    const renderLoop = () => {
+      requestAnimationFrame(renderLoop);
+  
+      renderer.render(scene, camera);
+    };
+  
+    renderLoop();
+  } 
+};
 
-  // const points = [];
-  // points.push(new THREE.Vector3(3, 0, 0)); // Ponto inicial
-  // points.push(new THREE.Vector3(10, 10, 10)); // Ponto final
-  // const geometry = new THREE.BufferGeometry().setFromPoints(points);
+export const drawLine = (
+  renderer: THREE.WebGLRenderer,
+  scene: THREE.Scene,
+  camera: THREE.PerspectiveCamera, 
+  initialPosition: THREE.Vector3, 
+  finalPosition: THREE.Vector3
+) => {
+  const color        = 0xe6ce58; // Cor da linha e ponto
+  const materialLine = new THREE.LineBasicMaterial({ color: color }); // Material da linha
+  const materialDot  = new THREE.PointsMaterial({ color: color, size: 10, sizeAttenuation: false }); // Material do ponto
 
-  // const line = new THREE.Line(geometry, material);
-  // scene.add(line);
+  // Posição inicial e final da linha
+  const positions = [
+    initialPosition,
+    finalPosition,
+  ];
+  
+  const geometryLine = new THREE.BufferGeometry().setFromPoints(positions); // Geometria da linha
+  const geometryDot  = new THREE.BufferGeometry().setFromPoints([initialPosition]); // Geometria do ponto
 
-  const renderLoop = (time: number) => {
+  const line = new THREE.Line(geometryLine, materialLine); // Cria linha
+  const dot  = new THREE.Points(geometryDot, materialDot); // Cria ponto
+  
+  scene.add(line); // Adiciona linha a cena
+  scene.add(dot); // Adiciona ponto a cena
+
+  // Loop para atualizar o ponto fixo da linha
+  const renderLoop = () => {
     requestAnimationFrame(renderLoop);
 
-    if (gltfScene) {
-      // if (control3dactive) {
-      //   gltfScene.rotation.y += 0.01;
-      // }
+    const vector    = new THREE.Vector3();
+    const positions = line.geometry.attributes.position.array; // Obtém posições da linha
 
-      const objectPosition = new THREE.Vector3();
-
-      gltfScene.getWorldPosition(objectPosition);
-
-      // Atualiza o segundo ponto da linha
-      // line.geometry.attributes.position.array[0] = objectPosition.x;
-      // line.geometry.attributes.position.array[1] = objectPosition.y;
-      // line.geometry.attributes.position.array[2] = objectPosition.z;
-      // line.geometry.attributes.position.needsUpdate = true;
-
-      // gltfScene.getWorldPosition(objectPosition);
-      // const verticeGlobal = objectPosition.applyMatrix4(gltfScene.matrixWorld);
-
-      // Atualiza a posição final da linha
-      // line.geometry.attributes.position.array[3] = objectPosition.x;
-      // line.geometry.attributes.position.array[4] = objectPosition.y;
-      // line.geometry.attributes.position.array[5] = objectPosition.z;
-      // line.geometry.attributes.position.needsUpdate = true;
-    }
+    vector.set(finalPosition.x, finalPosition.y, finalPosition.z).unproject(camera); // Converte coordenadas da tela para coordenadas 3D
+    
+    // Atualiza posição final da linha
+    positions[3] = vector.x; 
+    positions[4] = vector.y; 
+    positions[5] = vector.z; 
+    
+    line.geometry.attributes.position.needsUpdate = true; // Necessita ser atualizada
 
     renderer.render(scene, camera);
   };
+
   requestAnimationFrame(renderLoop);
-  renderLoop(0);
+  renderLoop();
 };
+
+export const isMobile  = () => window.matchMedia("(max-width: 1023px)").matches;

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import ThreeScene from "../../components/Obj3d/ThreeScene";
+import { isMobile } from "../Obj3d/setup";
 
 import { useGSAP } from "@gsap/react";
 import gsap, { Back, Power3 } from "gsap";
@@ -12,6 +13,8 @@ const PosBanner = () => {
   const elementRef = useRef(null);
   const containerAnimation = useRef<HTMLDivElement>(null);
   const [control3dactive, setControl3dactive] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(
@@ -339,9 +342,15 @@ const PosBanner = () => {
           ></iframe>
         </div> */}
       </div>
-      <div className="imgMobile w-full grid h-[50vh] relative z-[9999] justify-center align-items-center">
+      <div className="imgMobile w-full grid relative z-[9999] justify-center align-items-center">
+      {!control3dactive || !loading ? (
+          ''
+      ) : (
+        <span className="loader"></span>
+      )}
+
         {control3dactive ? (
-          <ThreeScene control3dactive={control3dactive} />
+          <ThreeScene control3dactive={control3dactive} setLoading={setLoading} />
         ) : (
           // {!control3dactive && (
           <div className="imgRetroescavadeira w-full self-center justify-self-center	">
@@ -355,6 +364,130 @@ const PosBanner = () => {
             />
           </div>
         )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
+            style={{top: 0, left: '47vw'}}
+          >
+            Cabine climatizada com ampla<br />
+            área envidraçada e certificação<br />
+            ROPS e FOPS
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{top: '11%', left: '81vw'}}
+          >
+            Função<br />
+            Hidráulica para<br />
+            Rompedor
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
+            style={{top: '31%', left: '86vw'}}
+          >
+            Maior<br />
+            profundidade<br />
+            de escavação
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{top: '64%', left: '86vw'}}
+          >
+            Proteções do<br />
+            cilindros dos<br />
+            estabilizadores
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{top: '82%', left: '82vw'}}
+          >
+            Sapatas reversíveis
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{top: '79%', left: '47vw'}}
+          >
+            Versões 4x2 e 4x4
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
+            style={{top: '81%', left: '27vw'}}
+          >
+            Transmissão e Eixos<br />
+            Carraro Reforçados
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{top: '42%', left: '8vw'}}
+          >
+            Caçamba frontal<br />
+            de 1,2³ com<br />
+            chapas desgaste
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-sm"
+            style={{top: '21%', left: '14vw'}}
+          >
+            Baixo consumo<br />
+            de combustível
+        </div>
+        )}
+
+        {loading || !control3dactive || isMobile() ? (
+          ''
+        ) : (
+          <div
+            className="absolute z-[400] text-black text-center pointer-events-none text-base font-bold"
+            style={{top: '11%', left: '28vw'}}
+          >
+            Motores Perkins<br />
+            ou Kirloskar
+        </div>
+        )}
+        
         {/* <ThreeScene control3dactive={control3dactive} /> */}
         {/* )} */}
       </div>
@@ -371,7 +504,7 @@ const PosBanner = () => {
           priority
         />
       </div> */}
-      <div className="barDetalhes relative min-[1900px]:mt-[200px] mt-[310px] flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999] max-md:mt-[200px]">
+      <div className="barDetalhes relative flex justify-center bg-[#FFC000] py-6 max-md:mb-6 z-[9999]">
         <div className="w-full max-w-[90%] flex justify-evenly max-md:flex-col">
           <div className="flex items-center max-md:mb-6">
             <div className="imgCheck1 bg-white w-[60px] h-[60px] rounded-full relative">

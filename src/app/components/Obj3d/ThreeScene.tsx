@@ -12,8 +12,9 @@ import {
 
 interface ThreeSceneProps {
   control3dactive: boolean;
+  setLoading: any
 }
-export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
+export default function ThreeScene({ control3dactive, setLoading }: ThreeSceneProps) {
   const mountRef = useRef(null);
   const [controls, setControls] = useState<OrbitControls | null>(null);
   const [scene, setScene] = useState<THREE.Scene | null>(null);
@@ -26,20 +27,20 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
   useEffect(() => {
     const sceneStart = createScene();
     const cameraStart = createCamera();
-    loadEnvironment(sceneStart).then(() => {
-      loadModel(sceneStart);
-    });
-
     const renderStart = createRenderer(mountRef.current);
 
-    animate(renderStart, sceneStart, cameraStart, control3dactive);
+    loadEnvironment(sceneStart).then(() => {
+      loadModel(renderStart, sceneStart, cameraStart, setLoading);
+    });
+
     const orbitControls = new OrbitControls(
       cameraStart,
       renderStart.domElement
     );
-    orbitControls.minDistance = 8;
-    orbitControls.maxDistance = 12;
+    orbitControls.minDistance = 7.7;
+    orbitControls.maxDistance = 7.7;
     orbitControls.enablePan = false;
+    orbitControls.enableZoom = false
     orbitControls.maxPolarAngle = Math.PI / 2;
     orbitControls.target.set(-0.8, 1.15, 0);
 
@@ -51,20 +52,23 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
     setScene(sceneStart);
     setCamera(cameraStart);
 
+    window.addEventListener( 'resize', () => {
+      renderStart.setSize(window.innerWidth, (768 / 1366) * window.innerWidth);
+    }, false );
+
     return () => renderStart.dispose();
   }, []);
-  useEffect(() => {
-    if (controls) {
-      controls.enabled = control3dactive;
-      controls.update();
-      animate(
-        renderer as THREE.WebGLRenderer,
-        scene as THREE.Scene,
-        camera as THREE.PerspectiveCamera,
-        control3dactive
-      );
-    }
-  }, [control3dactive, controls]);
+  // useEffect(() => {
+  //   if (controls) {
+  //     controls.enabled = control3dactive;
+  //     controls.update();
+  //     animate(
+  //       renderer as THREE.WebGLRenderer,
+  //       scene as THREE.Scene,
+  //       camera as THREE.PerspectiveCamera
+  //     );
+  //   }
+  // }, [control3dactive, controls]);
 
   return (
     <>
@@ -75,8 +79,8 @@ export default function ThreeScene({ control3dactive }: ThreeSceneProps) {
         // className="class-teste w-full h-[100vh] z-0 absolute md:top-[110vh] top-[57vh]"
         // className="class-teste w-full h-[100vh] z-0 absolute md:top-[-56vh] top-[-20vh]"
         ref={mountRef}
-        className={`class-teste w-full h-[99vh] z-0 absolute md:top-[-59vh] top-[-20vh] ${
-          control3dactive ? "block" : "hidden"
+        className={`class-teste w-full z-0 items-end lg:items-start ${
+          control3dactive ? "flex" : "hidden"
         }`}
       />
     </>
